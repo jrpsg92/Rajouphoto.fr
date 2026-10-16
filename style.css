@@ -1,0 +1,254 @@
+/* ==========================================================================
+   Raju Sinniah — photographe
+   Direction : papier et encre. Le site ne raconte rien de lui-même, il
+   laisse les images parler. Une seule couleur vive, le rouge de presse,
+   héritée du photojournalisme d'où vient son travail, et réservée aux
+   repères de lecture.
+   ========================================================================== */
+
+:root {
+  --papier: #F7F6F3;
+  --papier-creux: #EFEDE8;
+  --encre: #000000;
+  --encre-doux: #55534E;
+  --filet: #DCD9D2;        /* séparateur décoratif */
+  --filet-actif: #8C8880;  /* contour porteur d'information, ≥ 3:1 */
+  --rouge: #C1121F;        /* rouge de presse, usage parcimonieux */
+
+  --lisible: 62ch;
+  --marge: clamp(1.25rem, 4vw, 3.5rem);
+  --respiration: clamp(4rem, 10vw, 9rem);
+  --courbe: cubic-bezier(.2, .8, .2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--papier);
+  color: var(--encre);
+  font-family: Archivo, system-ui, -apple-system, sans-serif;
+  font-size: clamp(1rem, .95rem + .22vw, 1.08rem);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Le display est un serif de presse, posé en light et en grand. */
+h1, h2, h3 {
+  font-family: Newsreader, Georgia, serif;
+  font-weight: 300;
+  line-height: 1.06;
+  letter-spacing: -.02em;
+  margin: 0;
+  text-wrap: balance;
+}
+h1 { font-size: clamp(2.6rem, 1.4rem + 5vw, 5rem); }
+h2 { font-size: clamp(1.9rem, 1.3rem + 2.6vw, 3rem); }
+h3 { font-size: clamp(1.15rem, 1.05rem + .5vw, 1.4rem); font-weight: 400; letter-spacing: -.01em; }
+
+h1 + p, h2 + p { margin-top: 1.2rem; }
+h3 + p { margin-top: .45rem; }
+
+p { margin: 0 0 1.15em; max-width: var(--lisible); }
+img { display: block; max-width: 100%; height: auto; }
+
+a { color: var(--encre); text-underline-offset: .22em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-color: var(--rouge); text-decoration-thickness: 2px; }
+
+:focus-visible { outline: 2px solid var(--rouge); outline-offset: 3px; }
+
+.enveloppe { width: min(100% - 2 * var(--marge), 1320px); margin-inline: auto; }
+.colonne { max-width: var(--lisible); }
+
+.saut-contenu {
+  position: absolute; left: -9999px; top: 0;
+  background: var(--encre); color: var(--papier);
+  padding: .75rem 1.25rem; z-index: 200;
+}
+.saut-contenu:focus { left: 1rem; top: 1rem; }
+
+/* --- En-tête ------------------------------------------------------------ */
+.entete {
+  position: sticky; top: 0; z-index: 100;
+  background: color-mix(in srgb, var(--papier) 92%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--filet);
+}
+.entete__rangee {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 1rem; padding-block: 1rem;
+}
+
+.signature {
+  font-family: Newsreader, Georgia, serif;
+  font-size: 1.3rem; font-weight: 400; letter-spacing: .01em;
+  text-decoration: none; color: var(--encre);
+}
+.signature span { display: block; font-family: Archivo, sans-serif;
+  font-size: .72rem; letter-spacing: .16em; color: var(--encre-doux); margin-top: .15rem; }
+
+.bascule {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: none; border: 1px solid var(--filet-actif);
+  color: var(--encre); font: inherit; font-size: .9rem;
+  padding: .45rem .9rem; cursor: pointer; min-height: 44px;
+}
+.bascule__traits { position: relative; width: 16px; height: 1px; background: currentColor; }
+.bascule__traits::before, .bascule__traits::after {
+  content: ""; position: absolute; left: 0; width: 16px; height: 1px;
+  background: currentColor; transition: transform .3s var(--courbe);
+}
+.bascule__traits::before { top: -5px; }
+.bascule__traits::after { top: 5px; }
+[aria-expanded="true"] .bascule__traits { background: transparent; }
+[aria-expanded="true"] .bascule__traits::before { transform: translateY(5px) rotate(45deg); }
+[aria-expanded="true"] .bascule__traits::after { transform: translateY(-5px) rotate(-45deg); }
+
+.nav { display: none; }
+.nav[data-ouvert="true"] { display: block; }
+.nav ul { list-style: none; margin: 0; padding: 0 0 1rem; display: grid; gap: 0; }
+.nav a {
+  display: flex; align-items: center; min-height: 48px;
+  padding: .6rem 0; text-decoration: none;
+  border-bottom: 1px solid var(--filet);
+}
+.nav a[aria-current="page"] { color: var(--rouge); }
+
+@media (min-width: 56rem) {
+  .bascule { display: none; }
+  .nav { display: block !important; }
+  .nav ul { display: flex; gap: 1.75rem; padding: 0; }
+  .nav a { border: 0; min-height: 0; padding: 0; font-size: .97rem; }
+  .nav a:hover { text-decoration: underline; text-decoration-color: var(--rouge); }
+}
+
+/* --- Liens d'action ----------------------------------------------------- */
+/* Pas de pilule : un rectangle net, ou un simple lien souligné. */
+.action {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 48px; padding: .8rem 1.7rem;
+  background: var(--encre); color: var(--papier);
+  text-decoration: none; font-size: .95rem;
+  border: 1px solid var(--encre);
+  transition: background-color .25s var(--courbe), color .25s var(--courbe);
+}
+.action:hover { background: transparent; color: var(--encre); }
+
+.action--nu {
+  background: transparent; color: var(--encre);
+  border-color: var(--filet-actif); padding-inline: 1.4rem;
+}
+.action--nu:hover { background: var(--encre); color: var(--papier); border-color: var(--encre); }
+
+/* --- Sections ----------------------------------------------------------- */
+.section { padding-block: var(--respiration); }
+.section--creuse { background: var(--papier-creux); }
+.section__chapeau { margin-bottom: 3rem; }
+.section__chapeau p { color: var(--encre-doux); }
+
+.filet-haut { border-top: 1px solid var(--filet); }
+
+/* --- Ouverture ---------------------------------------------------------- */
+.ouverture { padding-block: clamp(3.5rem, 9vw, 8rem) clamp(2.5rem, 6vw, 5rem); }
+.ouverture p {
+  font-family: Newsreader, Georgia, serif;
+  font-size: clamp(1.25rem, 1.05rem + 1vw, 1.75rem);
+  font-weight: 300; line-height: 1.45; color: var(--encre-doux);
+  max-width: 44ch;
+}
+.ouverture__actions { display: flex; flex-wrap: wrap; gap: .9rem; margin-top: 2.25rem; }
+
+/* --- Séries ------------------------------------------------------------- */
+/* Les séries s'annoncent en pleine largeur, une par une : le visiteur
+   regarde une image à la fois, comme on tourne les pages d'un livre. */
+.series { display: grid; gap: clamp(2.5rem, 6vw, 5rem); }
+
+.serie { display: block; text-decoration: none; color: var(--encre); }
+.serie__cadre { overflow: hidden; background: var(--papier-creux); }
+.serie__cadre img {
+  width: 100%; aspect-ratio: 3 / 2; object-fit: cover;
+  transition: transform 1.1s var(--courbe);
+}
+.serie:hover .serie__cadre img { transform: scale(1.02); }
+
+.serie__pied {
+  display: flex; flex-wrap: wrap; align-items: baseline;
+  justify-content: space-between; gap: .5rem 1.5rem;
+  padding-top: 1rem; border-top: 1px solid var(--encre); margin-top: 1rem;
+}
+.serie__nombre { font-size: .9rem; color: var(--encre-doux); font-variant-numeric: tabular-nums; }
+.serie:hover .serie__pied h2 { text-decoration: underline; text-decoration-color: var(--rouge); }
+
+/* --- Planche d'une série ------------------------------------------------ */
+/* Grandes images, une ou deux par rangée. C'est son produit : on ne
+   le réduit pas en vignettes. */
+.planche { display: grid; gap: clamp(1rem, 2.5vw, 2rem); }
+@media (min-width: 60rem) {
+  .planche { grid-template-columns: repeat(2, 1fr); align-items: start; }
+  .planche > .pleine { grid-column: 1 / -1; }
+}
+.cliche { margin: 0; position: relative; background: var(--papier-creux); }
+.cliche button {
+  display: block; width: 100%; padding: 0; border: 0;
+  background: none; cursor: zoom-in;
+}
+.cliche img { width: 100%; }
+
+/* --- Prestations -------------------------------------------------------- */
+.prestations { display: grid; gap: 2.5rem; }
+@media (min-width: 52rem) { .prestations { grid-template-columns: repeat(2, 1fr); gap: 3rem 4rem; } }
+.prestation { border-top: 1px solid var(--encre); padding-top: 1.1rem; }
+.prestation p { color: var(--encre-doux); margin: 0; }
+
+.reperes { list-style: none; margin: 0; padding: 0; display: grid; gap: .75rem; }
+.reperes li { padding-left: 1.4rem; position: relative; color: var(--encre-doux); }
+.reperes li::before {
+  content: ""; position: absolute; left: 0; top: .66em;
+  width: 7px; height: 1px; background: var(--rouge);
+}
+
+/* --- Pied --------------------------------------------------------------- */
+.pied { border-top: 1px solid var(--filet); padding-block: 3rem 2rem; font-size: .93rem; }
+.pied__rangee { display: grid; gap: 1.75rem; }
+@media (min-width: 52rem) { .pied__rangee { grid-template-columns: 1fr auto; align-items: start; } }
+.pied p { color: var(--encre-doux); margin-bottom: .35rem; }
+.pied ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .5rem; }
+.pied__mention {
+  margin-top: 2.5rem; padding-top: 1.25rem;
+  border-top: 1px solid var(--filet); color: var(--encre-doux); font-size: .85rem;
+}
+
+/* --- Visionneuse -------------------------------------------------------- */
+.visionneuse { border: 0; padding: 0; background: transparent; max-width: 100vw; max-height: 100svh; }
+.visionneuse::backdrop { background: rgb(0 0 0 / .96); }
+.visionneuse img { max-width: 94vw; max-height: 84svh; width: auto; }
+.visionneuse__barre { display: flex; justify-content: center; gap: .75rem; padding-top: 1rem; }
+.visionneuse__bouton {
+  width: 48px; height: 48px;
+  border: 1px solid #555; background: transparent; color: #FFF;
+  font-size: 1.1rem; cursor: pointer;
+}
+.visionneuse__bouton:hover { background: #FFF; color: #000; border-color: #FFF; }
+
+/* --- Utilitaires -------------------------------------------------------- */
+.hors-ecran {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap;
+}
+
+.note-chantier {
+  max-width: none;
+  background: var(--encre); color: var(--papier);
+  padding: .9rem var(--marge); font-size: .9rem; text-align: center;
+}
+.note-chantier strong { color: #FF8A91; font-weight: 500; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}

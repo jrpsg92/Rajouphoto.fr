@@ -1,0 +1,55 @@
+{
+  "_lisezmoi": "Manifeste du portfolio. Les noms de séries viennent du portfolio existant de Raju. Pour ajouter une photo : la déposer dans photos/<serie>/, ajouter une entrée dans « cliches » avec son nom de fichier sans extension et sa description, puis lancer tools/build-images.py puis tools/build-series.py.",
+  "site": {
+    "nom": "Raju Sinniah",
+    "metier": "Photographe",
+    "base": "Île-de-France",
+    "zone": "Toute la France",
+    "instagram": "https://www.instagram.com/raju_sinniah/",
+    "depuis": 2010
+  },
+  "series": [
+    {
+      "cle": "humains",
+      "titre": "Humains",
+      "resume": "Des portraits, et surtout des présences. Ce que quelqu'un laisse voir quand il oublie l'appareil.",
+      "couverture": "humains-01",
+      "cliches": [
+        { "fichier": "humains-01", "alt": "Portrait — à remplacer par une photo de la série Humains", "pleine": true },
+        { "fichier": "humains-02", "alt": "Portrait — à remplacer par une photo de la série Humains" },
+        { "fichier": "humains-03", "alt": "Portrait — à remplacer par une photo de la série Humains" },
+        { "fichier": "humains-04", "alt": "Portrait — à remplacer par une photo de la série Humains", "pleine": true },
+        { "fichier": "humains-05", "alt": "Portrait — à remplacer par une photo de la série Humains" },
+        { "fichier": "humains-06", "alt": "Portrait — à remplacer par une photo de la série Humains" }
+      ]
+    },
+    {
+      "cle": "fragments",
+      "titre": "Fragments",
+      "resume": "Les détails qu'on ne regarde pas. Une main, une lumière, un bout de décor qui en dit plus que l'ensemble.",
+      "couverture": "fragments-01",
+      "cliches": [
+        { "fichier": "fragments-01", "alt": "Détail — à remplacer par une photo de la série Fragments", "pleine": true },
+        { "fichier": "fragments-02", "alt": "Détail — à remplacer par une photo de la série Fragments" },
+        { "fichier": "fragments-03", "alt": "Détail — à remplacer par une photo de la série Fragments" },
+        { "fichier": "fragments-04", "alt": "Détail — à remplacer par une photo de la série Fragments" },
+        { "fichier": "fragments-05", "alt": "Détail — à remplacer par une photo de la série Fragments", "pleine": true },
+        { "fichier": "fragments-06", "alt": "Détail — à remplacer par une photo de la série Fragments" }
+      ]
+    },
+    {
+      "cle": "moments",
+      "titre": "Moments",
+      "resume": "Mariages, anniversaires, réunions de famille. Ce qui se passe entre les photos de groupe.",
+      "couverture": "moments-01",
+      "cliches": [
+        { "fichier": "moments-01", "alt": "Scène — à remplacer par une photo de la série Moments", "pleine": true },
+        { "fichier": "moments-02", "alt": "Scène — à remplacer par une photo de la série Moments" },
+        { "fichier": "moments-03", "alt": "Scène — à remplacer par une photo de la série Moments" },
+        { "fichier": "moments-04", "alt": "Scène — à remplacer par une photo de la série Moments" },
+        { "fichier": "moments-05", "alt": "Scène — à remplacer par une photo de la série Moments", "pleine": true },
+        { "fichier": "moments-06", "alt": "Scène — à remplacer par une photo de la série Moments" }
+      ]
+    }
+  ]
+}

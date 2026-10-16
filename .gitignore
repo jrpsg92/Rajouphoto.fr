@@ -1,0 +1,8 @@
+# Originaux pleine résolution : trop lourds pour le dépôt public.
+# Les dérivés dans img/ sont, eux, versionnés et publiés.
+photos/**/*.jpg
+photos/**/*.jpeg
+photos/**/*.png
+photos/**/*.tif
+photos/**/*.tiff
+.DS_Store
