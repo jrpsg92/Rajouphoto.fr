@@ -160,9 +160,8 @@ a:hover { text-decoration-color: var(--rouge); text-decoration-thickness: 2px; }
 .ouverture__actions { display: flex; flex-wrap: wrap; gap: .9rem; margin-top: 2.25rem; }
 
 /* --- Séries ------------------------------------------------------------- */
-/* Les séries s'annoncent en pleine largeur, une par une : le visiteur
-   regarde une image à la fois, comme on tourne les pages d'un livre. */
-.series { display: grid; gap: clamp(2.5rem, 6vw, 5rem); }
+.series { display: grid; gap: clamp(2rem, 4vw, 2.5rem); }
+@media (min-width: 52rem) { .series { grid-template-columns: repeat(3, 1fr); } }
 
 .serie { display: block; text-decoration: none; color: var(--encre); }
 .serie__cadre { overflow: hidden; background: var(--papier-creux); }
@@ -181,19 +180,26 @@ a:hover { text-decoration-color: var(--rouge); text-decoration-thickness: 2px; }
 .serie:hover .serie__pied h2 { text-decoration: underline; text-decoration-color: var(--rouge); }
 
 /* --- Planche d'une série ------------------------------------------------ */
-/* Grandes images, une ou deux par rangée. C'est son produit : on ne
-   le réduit pas en vignettes. */
-.planche { display: grid; gap: clamp(1rem, 2.5vw, 2rem); }
-@media (min-width: 60rem) {
-  .planche { grid-template-columns: repeat(2, 1fr); align-items: start; }
-  .planche > .pleine { grid-column: 1 / -1; }
+/* Une planche contact : des cadrages réguliers qu'on parcourt du regard,
+   et la photographie s'ouvre en grand au clic. C'est la façon dont un
+   reporter trie ses images, et ça évite de faire défiler une page entière
+   par photo. */
+.planche {
+  display: grid; gap: clamp(.75rem, 1.6vw, 1.1rem);
+  grid-template-columns: repeat(2, 1fr);
 }
-.cliche { margin: 0; position: relative; background: var(--papier-creux); }
+@media (min-width: 52rem) { .planche { grid-template-columns: repeat(3, 1fr); } }
+
+.cliche { margin: 0; background: var(--papier-creux); }
 .cliche button {
   display: block; width: 100%; padding: 0; border: 0;
-  background: none; cursor: zoom-in;
+  background: none; cursor: zoom-in; overflow: hidden;
 }
-.cliche img { width: 100%; }
+.cliche img {
+  width: 100%; aspect-ratio: 3 / 2; object-fit: cover;
+  transition: opacity .3s var(--courbe);
+}
+.cliche button:hover img { opacity: .82; }
 
 /* --- Prestations -------------------------------------------------------- */
 .prestations { display: grid; gap: 2.5rem; }

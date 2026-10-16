@@ -70,7 +70,7 @@ def pied() -> str:
     <div class="pied__rangee">
       <div>
         <p>{SITE['nom']}, photographe depuis {SITE['depuis']}.</p>
-        <p>Basé en {SITE['base']}, je me déplace dans {SITE['zone'].lower()}.</p>
+        <p>Basé en {SITE['base']}, je me déplace dans {SITE['zone'][0].lower() + SITE['zone'][1:]}.</p>
         <p><a href="{SITE['instagram']}" rel="noopener">Instagram</a></p>
       </div>
       <ul>
@@ -117,10 +117,11 @@ def tete(titre: str, description: str, page: str) -> str:
 def page_serie(serie: dict) -> str:
     planches = []
     for c in serie["cliches"]:
-        classe = "cliche pleine" if c.get("pleine") else "cliche"
-        sizes = "(min-width: 60rem) 1280px, 100vw" if c.get("pleine") else "(min-width: 60rem) 48vw, 100vw"
+        # Planche contact : toutes les vignettes ont le même cadre, la photo
+        # s'ouvre en grand dans la visionneuse.
+        sizes = "(min-width: 52rem) 31vw, 47vw"
         planches.append(
-            f'        <figure class="{classe}">\n'
+            f'        <figure class="cliche">\n'
             f'          <button type="button" data-cliche>\n'
             f'            <img {jeu(c["fichier"], sizes)}\n'
             f'               alt="{c["alt"]}" loading="lazy">\n'
@@ -184,7 +185,7 @@ def apercu() -> str:
         blocs.append(
             f'        <a class="serie" href="{s["cle"]}.html">\n'
             f'          <div class="serie__cadre">\n'
-            f'            <img {jeu(s["couverture"], "(min-width: 82.5rem) 1320px, 100vw")}\n'
+            f'            <img {jeu(s["couverture"], "(min-width: 52rem) 31vw, 100vw")}\n'
             f'               alt="{s["titre"]} — {s["resume"][:60]}" loading="lazy">\n'
             f"          </div>\n"
             f'          <div class="serie__pied">\n'
