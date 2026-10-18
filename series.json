@@ -12,61 +12,569 @@
     {
       "cle": "humains",
       "titre": "Humains",
-      "resume": "Des visages, et ce qu'ils laissent passer.",
+      "resume": "Celles et ceux que j'ai photographiés.",
       "couverture": "humains-01",
       "cliches": [
-        { "fichier": "humains-01", "alt": "Mariée en sari doré, bijoux de tête, lumière rouge en arrière-plan" },
-        { "fichier": "humains-02", "alt": "Chanteur les yeux fermés, main sur la poitrine, en pleine interprétation" },
-        { "fichier": "humains-03", "alt": "Portrait de grossesse en noir et blanc, voile et couronne" },
-        { "fichier": "humains-04", "alt": "Peintre au travail, traversé par la lumière d'une fenêtre" },
-        { "fichier": "humains-05", "alt": "Jeune fille sous un feuillage, noir et blanc" },
-        { "fichier": "humains-06", "alt": "Saxophoniste devant un rideau de fer, cigarette aux lèvres" },
-        { "fichier": "humains-07", "alt": "Fillette en sari lors d'une fête traditionnelle" },
-        { "fichier": "humains-08", "alt": "Femme âgée derrière une vitrine, reflets superposés" },
-        { "fichier": "humains-09", "alt": "Femme sous les arcades, perspective de colonnes" },
-        { "fichier": "humains-10", "alt": "Officier en uniforme sur une scène de rue éclairée" },
-        { "fichier": "humains-11", "alt": "Nouveau-né à la couronne de fleurs, noir et blanc" },
-        { "fichier": "humains-12", "alt": "Homme assis sur un banc dans une rue fleurie" }
+        {
+          "fichier": "humains-01",
+          "alt": "Mariée en sari doré, bijoux de tête, lumière rouge en arrière-plan"
+        },
+        {
+          "fichier": "humains-02",
+          "alt": "Œil d'une mariée apparaissant derrière un voile blanc"
+        },
+        {
+          "fichier": "humains-03",
+          "alt": "Portrait de grossesse en noir et blanc, voile et couronne"
+        },
+        {
+          "fichier": "humains-04",
+          "alt": "Chanteur les yeux fermés, main sur la poitrine"
+        },
+        {
+          "fichier": "humains-05",
+          "alt": "Mariage tamoul, guirlandes de fleurs et bijoux de cérémonie"
+        },
+        {
+          "fichier": "humains-06",
+          "alt": "Peintre au travail, traversé par la lumière d'une fenêtre"
+        },
+        {
+          "fichier": "humains-07",
+          "alt": "Mariés réunis sous le voile, noir et blanc"
+        },
+        {
+          "fichier": "humains-08",
+          "alt": "Jeune fille sous un feuillage, noir et blanc"
+        },
+        {
+          "fichier": "humains-09",
+          "alt": "Saxophoniste devant un rideau de fer"
+        },
+        {
+          "fichier": "humains-10",
+          "alt": "Mariée en sari rouge et or, lumière rasante"
+        },
+        {
+          "fichier": "humains-11",
+          "alt": "Marié soulevant la mariée, bouquet bleu en mouvement"
+        },
+        {
+          "fichier": "humains-12",
+          "alt": "Couple en costume bordeaux et robe rouge, architecture parisienne"
+        },
+        {
+          "fichier": "humains-13",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-14",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-15",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-16",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-17",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-18",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-19",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-20",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-21",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-22",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-23",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-24",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-25",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-26",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-27",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-28",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-29",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-30",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-31",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-32",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-33",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-34",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-35",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-36",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-37",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-38",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-39",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-40",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-41",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-42",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-43",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-44",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-45",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-46",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-47",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-48",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-49",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-50",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-51",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-52",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-53",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-54",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-55",
+          "alt": "Portrait signé Raju Sinniah"
+        },
+        {
+          "fichier": "humains-56",
+          "alt": "Portrait signé Raju Sinniah"
+        }
       ]
     },
     {
       "cle": "fragments",
       "titre": "Fragments",
-      "resume": "Les détails que personne ne regarde.",
+      "resume": "Le vivant de près. Fleurs, herbes, insectes.",
       "couverture": "fragments-01",
       "cliches": [
-        { "fichier": "fragments-01", "alt": "Œil d'une mariée apparaissant derrière un voile blanc" },
-        { "fichier": "fragments-02", "alt": "Pieds de danseuse de bharatanatyam, grelots et teinture rouge" },
-        { "fichier": "fragments-03", "alt": "Mains croisées en mudra à contre-jour devant une fenêtre" },
-        { "fichier": "fragments-04", "alt": "Deux paires de mains réunies sur un ventre rond, noir et blanc" },
-        { "fichier": "fragments-05", "alt": "Pieds de nouveau-né dans un voile rose" },
-        { "fichier": "fragments-06", "alt": "Pied de danseuse posé au sol, bordure de sari rouge et noir" },
-        { "fichier": "fragments-07", "alt": "Silhouette découpée dans l'embrasure d'une fenêtre ouverte" },
-        { "fichier": "fragments-08", "alt": "Scène saisie à travers une vitre, reflets superposés" },
-        { "fichier": "fragments-09", "alt": "Façade et fenêtres turquoise, un visage à l'une d'elles" },
-        { "fichier": "fragments-10", "alt": "Roses trémières rouges en gros plan" },
-        { "fichier": "fragments-11", "alt": "Ballon rouge en forme de cœur face à la mer" },
-        { "fichier": "fragments-12", "alt": "Alliance posée dans la reliure d'un livre ouvert" }
+        {
+          "fichier": "fragments-01",
+          "alt": "Roses trémières rouges en gros plan"
+        },
+        {
+          "fichier": "fragments-02",
+          "alt": "Fleurs blanches et vertes en macro"
+        },
+        {
+          "fichier": "fragments-03",
+          "alt": "Salicaire pourpre en fleurs"
+        },
+        {
+          "fichier": "fragments-04",
+          "alt": "Tournesol dans un massif"
+        },
+        {
+          "fichier": "fragments-05",
+          "alt": "Dahlia rose et blanc sur fond sombre"
+        },
+        {
+          "fichier": "fragments-06",
+          "alt": "Moineau posé entre des feuilles"
+        },
+        {
+          "fichier": "fragments-07",
+          "alt": "Graminées au soleil, macro"
+        },
+        {
+          "fichier": "fragments-08",
+          "alt": "Dahlia rayé rose et blanc"
+        },
+        {
+          "fichier": "fragments-09",
+          "alt": "Pâquerettes sauvages sur fond vert sombre"
+        },
+        {
+          "fichier": "fragments-10",
+          "alt": "Libellule posée sur une tige"
+        },
+        {
+          "fichier": "fragments-11",
+          "alt": "Détail du vivant photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "fragments-12",
+          "alt": "Détail du vivant photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "fragments-13",
+          "alt": "Détail du vivant photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "fragments-14",
+          "alt": "Détail du vivant photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "fragments-15",
+          "alt": "Détail du vivant photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "fragments-16",
+          "alt": "Détail du vivant photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "fragments-17",
+          "alt": "Détail du vivant photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "fragments-18",
+          "alt": "Détail du vivant photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "fragments-19",
+          "alt": "Détail du vivant photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "fragments-20",
+          "alt": "Détail du vivant photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "fragments-21",
+          "alt": "Détail du vivant photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "fragments-22",
+          "alt": "Détail du vivant photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "fragments-23",
+          "alt": "Détail du vivant photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "fragments-24",
+          "alt": "Détail du vivant photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "fragments-25",
+          "alt": "Détail du vivant photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "fragments-26",
+          "alt": "Détail du vivant photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "fragments-27",
+          "alt": "Détail du vivant photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "fragments-28",
+          "alt": "Détail du vivant photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "fragments-29",
+          "alt": "Détail du vivant photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "fragments-30",
+          "alt": "Détail du vivant photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "fragments-31",
+          "alt": "Détail du vivant photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "fragments-32",
+          "alt": "Détail du vivant photographié par Raju Sinniah"
+        }
       ]
     },
     {
       "cle": "moments",
       "titre": "Moments",
-      "resume": "Mariages, fêtes, scène. Ce qui arrive vraiment.",
+      "resume": "Des lieux, des villes, des jours qui passent.",
       "couverture": "moments-01",
       "cliches": [
-        { "fichier": "moments-01", "alt": "Mariage tamoul, guirlandes de fleurs et bijoux de cérémonie" },
-        { "fichier": "moments-02", "alt": "Mariés réunis sous le voile, noir et blanc" },
-        { "fichier": "moments-03", "alt": "Couple enlacé sous les arcades, robe rouge" },
-        { "fichier": "moments-04", "alt": "Marié soulevant la mariée, bouquet bleu en mouvement" },
-        { "fichier": "moments-05", "alt": "Danseuses en sari bleu et jaune, bras tendus à l'unisson" },
-        { "fichier": "moments-06", "alt": "Deux chanteuses enlacées sur scène, micro à la main" },
-        { "fichier": "moments-07", "alt": "Enfant lancé en l'air par son père, bord de lac" },
-        { "fichier": "moments-08", "alt": "Couple en robe rouge devant l'Institut de France" },
-        { "fichier": "moments-09", "alt": "Mariée en sari rouge sous une tonnelle de glycines" },
-        { "fichier": "moments-10", "alt": "Enfant courant après des bulles de savon sur les pavés" },
-        { "fichier": "moments-11", "alt": "Couple assis sur un ponton au coucher de soleil" },
-        { "fichier": "moments-12", "alt": "Chanteur au chapeau en concert, noir et blanc" }
+        {
+          "fichier": "moments-01",
+          "alt": "Ballon rouge en forme de cœur face à la mer"
+        },
+        {
+          "fichier": "moments-02",
+          "alt": "Villa sur la côte sous un ciel violet"
+        },
+        {
+          "fichier": "moments-03",
+          "alt": "Jetée et mer au crépuscule"
+        },
+        {
+          "fichier": "moments-04",
+          "alt": "Phare au coucher de soleil, mouette en vol"
+        },
+        {
+          "fichier": "moments-05",
+          "alt": "La Joconde sur un mur sombre du Louvre"
+        },
+        {
+          "fichier": "moments-06",
+          "alt": "Grande roue se détachant sur un ciel turquoise"
+        },
+        {
+          "fichier": "moments-07",
+          "alt": "Plage et ville au loin, lumière d'hiver"
+        },
+        {
+          "fichier": "moments-08",
+          "alt": "Vitrail d'église aux couleurs saturées"
+        },
+        {
+          "fichier": "moments-09",
+          "alt": "Couronne de joaillerie sous une voûte"
+        },
+        {
+          "fichier": "moments-10",
+          "alt": "Mouette posée sur un panneau à contre-jour"
+        },
+        {
+          "fichier": "moments-11",
+          "alt": "Paysage ou lieu photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "moments-12",
+          "alt": "Paysage ou lieu photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "moments-13",
+          "alt": "Paysage ou lieu photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "moments-14",
+          "alt": "Paysage ou lieu photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "moments-15",
+          "alt": "Paysage ou lieu photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "moments-16",
+          "alt": "Paysage ou lieu photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "moments-17",
+          "alt": "Paysage ou lieu photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "moments-18",
+          "alt": "Paysage ou lieu photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "moments-19",
+          "alt": "Paysage ou lieu photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "moments-20",
+          "alt": "Paysage ou lieu photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "moments-21",
+          "alt": "Paysage ou lieu photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "moments-22",
+          "alt": "Paysage ou lieu photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "moments-23",
+          "alt": "Paysage ou lieu photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "moments-24",
+          "alt": "Paysage ou lieu photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "moments-25",
+          "alt": "Paysage ou lieu photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "moments-26",
+          "alt": "Paysage ou lieu photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "moments-27",
+          "alt": "Paysage ou lieu photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "moments-28",
+          "alt": "Paysage ou lieu photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "moments-29",
+          "alt": "Paysage ou lieu photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "moments-30",
+          "alt": "Paysage ou lieu photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "moments-31",
+          "alt": "Paysage ou lieu photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "moments-32",
+          "alt": "Paysage ou lieu photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "moments-33",
+          "alt": "Paysage ou lieu photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "moments-34",
+          "alt": "Paysage ou lieu photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "moments-35",
+          "alt": "Paysage ou lieu photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "moments-36",
+          "alt": "Paysage ou lieu photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "moments-37",
+          "alt": "Paysage ou lieu photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "moments-38",
+          "alt": "Paysage ou lieu photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "moments-39",
+          "alt": "Paysage ou lieu photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "moments-40",
+          "alt": "Paysage ou lieu photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "moments-41",
+          "alt": "Paysage ou lieu photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "moments-42",
+          "alt": "Paysage ou lieu photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "moments-43",
+          "alt": "Paysage ou lieu photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "moments-44",
+          "alt": "Paysage ou lieu photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "moments-45",
+          "alt": "Paysage ou lieu photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "moments-46",
+          "alt": "Paysage ou lieu photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "moments-47",
+          "alt": "Paysage ou lieu photographié par Raju Sinniah"
+        },
+        {
+          "fichier": "moments-48",
+          "alt": "Paysage ou lieu photographié par Raju Sinniah"
+        }
       ]
     }
   ]

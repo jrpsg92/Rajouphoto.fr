@@ -17,14 +17,16 @@ SITE = MANIFESTE["site"]
 SERIES = MANIFESTE["series"]
 BASE = "https://jrpsg92.github.io/Rajouphoto.fr"
 
-LARGEURS = [640, 1200, 1800, 2400]
+# Doit rester aligné sur tools/build-images.py.
+LARGEURS = [480, 1000, 1700]
 
 LIENS = [
     ("index.html", "Accueil"),
     ("humains.html", "Humains"),
     ("fragments.html", "Fragments"),
     ("moments.html", "Moments"),
-    ("prestations.html", "Prestations"),
+    ("a-propos.html", "À propos"),
+    ("prestations.html", "Travailler ensemble"),
     ("contact.html", "Contact"),
 ]
 
@@ -174,6 +176,7 @@ def apercu() -> str:
             f'            <h3>{s["titre"]}</h3>\n'
             f'            <span class="serie__nombre">{len(s["cliches"]):02d}</span>\n'
             f"          </div>\n"
+            f'          <p class="serie__mot">{s["resume"]}</p>\n'
             f"        </a>"
         )
     return '      <div class="series">\n' + "\n".join(blocs) + "\n      </div>"

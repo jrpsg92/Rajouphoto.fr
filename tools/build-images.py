@@ -20,12 +20,14 @@ from pathlib import Path
 from PIL import Image, ImageOps
 
 RACINE = Path(__file__).resolve().parent.parent
-SOURCES = RACINE / "photos"
+SOURCES = RACINE / "photos"  # les sous-dossiers de séries, plus la racine
 SORTIE = RACINE / "img"
 SORTIE.mkdir(exist_ok=True)
 
-LARGEURS = [640, 1200, 1800, 2400]
-QUALITE = 90
+# 136 photographies : trois largeurs suffisent, et la qualité reste
+# haute pour la vue agrandie. Au-delà, le dépôt devient ingérable.
+LARGEURS = [480, 1000, 1700]
+QUALITE = 84
 EXTENSIONS = {".jpg", ".jpeg", ".png", ".tif", ".tiff", ".webp"}
 
 
@@ -57,6 +59,14 @@ def main() -> None:
         )
 
     trouvees = 0
+    racine = sorted(p for p in SOURCES.iterdir()
+                    if p.is_file() and p.suffix.lower() in EXTENSIONS)
+    if racine:
+        print("portrait :")
+        for src in racine:
+            exporter(src)
+            trouvees += 1
+
     for dossier in sorted(p for p in SOURCES.iterdir() if p.is_dir()):
         images = sorted(
             p for p in dossier.iterdir() if p.suffix.lower() in EXTENSIONS

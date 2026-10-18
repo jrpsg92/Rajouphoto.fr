@@ -21,10 +21,15 @@ Les photos vivent dans `photos/<série>/`, nommées comme dans `series.json`.
 
 ```
 photos/
-  humains/    humains-01.jpg, humains-02.jpg, …
-  fragments/  fragments-01.jpg, …
-  moments/    moments-01.jpg, …
+  portrait-raju.jpg          le portrait de Raju
+  humains/    humains-01.jpg, humains-02.jpg, …    les personnes
+  fragments/  fragments-01.jpg, …                  les plantes, le vivant
+  moments/    moments-01.jpg, …                    les lieux, les paysages
 ```
+
+Le site compte 136 photographies. Le premier fichier de chaque série
+sert de couverture sur l'accueil, et l'ordre des fichiers est l'ordre
+d'affichage.
 
 Déposez les **originaux pleine résolution**, les scripts se chargent de la
 réduction. Puis :
@@ -54,7 +59,7 @@ lancer les scripts :
 
 ### Qualité d'image
 
-`tools/build-images.py` sort du WebP qualité 90 jusqu'à 2400 px de large.
+`tools/build-images.py` sort du WebP qualité 90 jusqu'à 1700 px de large.
 Une photo n'est jamais agrandie, donc un original de 1400 px ne produit
 que les largeurs inférieures. `build-series.py` élague alors les `srcset`
 des largeurs absentes, ce qui évite les images cassées.
@@ -68,9 +73,9 @@ sont le produit. Ne baissez ces réglages que si Raju le demande.
 Tout est dans `style.css`, dans le bloc `:root` en haut du fichier.
 
 ```css
---noir:   #0E0B09;   /* fond, un noir chaud de chambre noire */
---ivoire: #F2EDE6;   /* texte */
---rouge:  #E04A4A;   /* unique couleur vive, repères de lecture */
+--blanc: #FBFAF7;   /* fond, un blanc chaud */
+--encre: #16130F;   /* texte */
+--rouge: #A8181E;   /* unique couleur vive, repères de lecture */
 ```
 
 Les contrastes ont été vérifiés : toutes les paires texte/fond dépassent
@@ -89,7 +94,8 @@ index.html                 accueil
 humains.html               ─┐
 fragments.html              ├ générées par build-series.py, ne pas éditer à la main
 moments.html               ─┘
-prestations.html           prestations
+a-propos.html              à propos
+prestations.html           travailler ensemble
 contact.html               contact
 mentions-legales.html      mentions légales
 series.json                le portfolio : séries, fichiers, descriptions
