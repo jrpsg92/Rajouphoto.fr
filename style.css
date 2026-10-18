@@ -81,7 +81,10 @@ a:hover { text-decoration-color: var(--rouge); }
   transition: border-color .4s var(--courbe);
 }
 .entete[data-pose="true"] { border-bottom-color: var(--filet); }
-.entete__rangee { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.entete__rangee {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; flex-wrap: nowrap;
+}
 
 .signature {
   font-family: "Bodoni Moda", Didot, serif;
@@ -110,7 +113,8 @@ a:hover { text-decoration-color: var(--rouge); }
   transform: rotate(45deg);
 }
 
-/* Volet plein écran : le menu devient un moment, pas une barre. */
+/* Sur mobile, un volet plein écran. Au-delà, les séries et les pages
+   s'affichent directement dans l'en-tête. */
 .nav {
   position: fixed; inset: 0; z-index: 150;
   background: var(--blanc);
@@ -138,6 +142,34 @@ a:hover { text-decoration-color: var(--rouge); }
 .nav li:nth-child(7) a { transition-delay: .3s; }
 .nav a:hover, .nav a[aria-current="page"] { color: var(--rouge); }
 
+@media (min-width: 62rem) {
+  .bascule { display: none; }
+  .nav {
+    position: static; inset: auto; z-index: auto;
+    background: none; display: block; place-items: initial;
+    opacity: 1; visibility: visible; transition: none;
+  }
+  .nav ul { display: flex; align-items: center; gap: clamp(.9rem, 1.8vw, 1.9rem); }
+  .nav li { overflow: visible; }
+  .nav a {
+    position: relative;
+    font-family: Jost, sans-serif;
+    font-size: .72rem; font-weight: 400;
+    letter-spacing: .15em; text-transform: uppercase;
+    white-space: nowrap;
+    padding: .35rem 0; transform: none; transition: color .3s;
+  }
+  /* Le filet se dessine sous l'entrée survolée ou courante. */
+  .nav a::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0;
+    height: 1px; background: currentColor;
+    transform: scaleX(0); transform-origin: right;
+    transition: transform .45s var(--courbe);
+  }
+  .nav a:hover::after { transform: scaleX(1); transform-origin: left; }
+  .nav a[aria-current="page"]::after { transform: scaleX(1); }
+}
+
 /* --- Liens d'action ----------------------------------------------------- */
 .action {
   display: inline-flex; align-items: center; gap: .9rem;
@@ -155,16 +187,24 @@ a:hover { text-decoration-color: var(--rouge); }
 /* Pas de grande photographie en ouverture : un mot, un nom, et le travail
    juste en dessous. */
 .accueil {
-  padding-block: clamp(4rem, 13vh, 9rem) clamp(3rem, 8vh, 6rem);
+  padding-block: clamp(4rem, 14vh, 10rem) clamp(3rem, 8vh, 6rem);
   text-align: center;
 }
-.accueil h1 { margin-block: .7rem .9rem; }
-.accueil__ligne {
-  font-size: clamp(1.02rem, .96rem + .45vw, 1.22rem);
-  color: var(--encre-doux); max-width: 38ch;
-  margin-inline: auto;
+.accueil h1 { margin: 0; }
+/* Le mot d'accueil porte la page, le nom se lit juste en dessous. */
+.accueil__bienvenue {
+  display: block;
+  font-size: clamp(3.4rem, 1rem + 11vw, 11rem);
+  line-height: .92; letter-spacing: -.025em;
 }
-.accueil__actions { display: flex; justify-content: center; margin-top: 2.2rem; }
+.accueil__nom {
+  display: block; margin-top: clamp(.9rem, 2vw, 1.4rem);
+  font-family: Jost, sans-serif; font-weight: 400;
+  font-size: clamp(.78rem, .72rem + .35vw, .95rem);
+  letter-spacing: .4em; text-transform: uppercase;
+  color: var(--encre-doux);
+}
+.accueil__actions { display: flex; justify-content: center; margin-top: clamp(2rem, 5vw, 3rem); }
 
 /* Le mot d'accueil se révèle au chargement, une fois. */
 /* Le masque doit laisser passer les jambages, sinon le « j » de Raju est
@@ -301,6 +341,21 @@ a:hover { text-decoration-color: var(--rouge); }
   clip-path: inset(50%); white-space: nowrap;
 }
 
+/* --- Étiquette qui suit le curseur -------------------------------------- */
+/* Sur la planche, un repère suit le pointeur et annonce l'agrandissement.
+   Il n'apparaît qu'avec une souris, jamais au doigt. */
+.suiveur {
+  position: fixed; top: 0; left: 0; z-index: 120;
+  display: grid; place-items: center;
+  width: 92px; height: 92px; border-radius: 50%;
+  background: var(--encre); color: var(--blanc);
+  font-size: .6rem; letter-spacing: .22em; text-transform: uppercase;
+  pointer-events: none;
+  opacity: 0; transform: translate(-50%, -50%) scale(.6);
+  transition: opacity .35s var(--courbe), transform .35s var(--courbe);
+}
+.suiveur[data-actif="true"] { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+
 /* --- Interactions ------------------------------------------------------- */
 /* Rideau d'ouverture de page. Animation CSS pure, donc il se lève même
    si le JavaScript ne tourne pas. */
@@ -340,6 +395,7 @@ a:hover { text-decoration-color: var(--rouge); }
   .leve > * { transform: none; }
   .nav a { transform: none; }
   .rideau { display: none; }
+  .suiveur { display: none; }
   [data-apparait] { opacity: 1; transform: none; }
   .volet::after { display: none; }
 }

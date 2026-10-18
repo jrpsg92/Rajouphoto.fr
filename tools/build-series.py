@@ -74,9 +74,11 @@ def tete(titre: str, description: str, page: str, og: str) -> str:
 
 def entete(actif: str) -> str:
     items = "\n".join(
-        f'      <li><a href="{h}"{" aria-current=\"page\"" if h == actif else ""}>{t}</a></li>'
+        f'        <li><a href="{h}"{" aria-current=\"page\"" if h == actif else ""}>{t}</a></li>'
         for h, t in LIENS
     )
+    # La navigation vit dans la rangée d'en-tête : en grand écran elle s'y
+    # range naturellement, en petit écran elle en sort en volet fixe.
     return f"""<header class="entete" data-entete>
   <div class="enveloppe entete__rangee">
     <a class="signature" href="index.html">{SITE['nom']}</a>
@@ -84,14 +86,13 @@ def entete(actif: str) -> str:
       <span class="bascule__traits" aria-hidden="true"></span>
       <span data-libelle>Menu</span>
     </button>
-  </div>
-</header>
-
-<nav class="nav" id="menu" data-nav aria-label="Navigation principale">
-  <ul>
+    <nav class="nav" id="menu" data-nav aria-label="Navigation principale">
+      <ul>
 {items}
-  </ul>
-</nav>"""
+      </ul>
+    </nav>
+  </div>
+</header>"""
 
 
 def pied() -> str:
