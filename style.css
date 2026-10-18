@@ -1,6 +1,6 @@
 /* ==========================================================================
    Raju Sinniah — photographe
-   Blanc chaud, encre, un rouge profond en repère. Les photographies
+   Blanc chaud, encre, une touche de vert de sous-bois. Les photographies
    portent toute la couleur, le site n'en ajoute pas. Didone de magazine
    pour les titres, sans empattement fin pour le texte.
    ========================================================================== */
@@ -10,7 +10,10 @@
   --blanc-creux: #F2EFE9;
   --encre: #16130F;
   --encre-doux: #5C564E;
-  --rouge: #A8181E;
+  /* Vert de sous-bois, repris des photographies de la série Fragments.
+     Employé par touches, jamais en aplat. */
+  --vert: #2E5E4E;
+  --vert-clair: #8FC6B0;   /* sur fond sombre uniquement */
 
   --filet: #E3DFD8;        /* séparateur décoratif */
   --filet-actif: #8E887E;  /* contour porteur d'information, ≥ 3:1 */
@@ -52,14 +55,16 @@ p { margin: 0 0 1em; max-width: 46ch; }
 img { display: block; max-width: 100%; height: auto; }
 
 a { color: var(--encre); text-underline-offset: .25em; }
-a:hover { text-decoration-color: var(--rouge); }
+a:hover { text-decoration-color: var(--vert); }
 
-:focus-visible { outline: 2px solid var(--rouge); outline-offset: 4px; }
+:focus-visible { outline: 2px solid var(--vert); outline-offset: 4px; }
 
+/* Les surtitres portent le vert. C'est la touche visible sur chaque
+   page, y compris au doigt, là où aucun survol n'existe. */
 .repere {
   font-size: .68rem; font-weight: 400;
   letter-spacing: .32em; text-transform: uppercase;
-  color: var(--encre-doux);
+  color: var(--vert);
 }
 
 .enveloppe { width: min(100% - 2 * var(--marge), 1440px); margin-inline: auto; }
@@ -152,7 +157,7 @@ a:hover { text-decoration-color: var(--rouge); }
 .nav li:nth-child(5) a { transition-delay: .2s; }
 .nav li:nth-child(6) a { transition-delay: .25s; }
 .nav li:nth-child(7) a { transition-delay: .3s; }
-.nav a:hover, .nav a[aria-current="page"] { color: var(--rouge); }
+.nav a:hover, .nav a[aria-current="page"] { color: var(--vert); }
 
 @media (min-width: 62rem) {
   .bascule { display: none; }
@@ -192,7 +197,7 @@ a:hover { text-decoration-color: var(--rouge); }
   transition: border-color .35s var(--courbe), color .35s;
 }
 .action::after { content: ""; width: 26px; height: 1px; background: currentColor; transition: width .35s var(--courbe); }
-.action:hover { color: var(--rouge); border-color: var(--rouge); }
+.action:hover { color: var(--vert); border-color: var(--vert); }
 .action:hover::after { width: 42px; }
 
 /* --- Accueil ------------------------------------------------------------ */
@@ -282,7 +287,7 @@ a:hover { text-decoration-color: var(--rouge); }
   color: var(--encre-doux);
   transition: color .3s, letter-spacing .4s var(--courbe);
 }
-.serie:hover .serie__fleche { color: var(--rouge); letter-spacing: .36em; }
+.serie:hover .serie__fleche { color: var(--vert); letter-spacing: .36em; }
 
 /* --- Planche ------------------------------------------------------------ */
 .planche { display: grid; gap: clamp(.5rem, 1.2vw, 1rem); grid-template-columns: repeat(2, 1fr); }
@@ -312,6 +317,14 @@ a:hover { text-decoration-color: var(--rouge); }
   color: var(--encre-doux); font-family: Jost, sans-serif;
   font-size: .68rem; letter-spacing: .24em; text-transform: uppercase;
 }
+/* Un court filet vert ouvre chaque ligne de la liste. */
+.liste-grande li { position: relative; }
+.liste-grande li::before {
+  content: ""; position: absolute; left: 0; top: -1px;
+  width: 0; height: 1px; background: var(--vert);
+  transition: width .5s var(--courbe);
+}
+.liste-grande li:hover::before { width: 56px; }
 
 /* --- Duo texte / image -------------------------------------------------- */
 .duo { display: grid; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
@@ -330,7 +343,7 @@ a:hover { text-decoration-color: var(--rouge); }
   margin: 1.2rem auto 0; max-width: 40ch;
   color: #BFB8AE;
 }
-.appel .repere { color: #BFB8AE; }
+.appel .repere { color: var(--vert-clair); }
 
 .bouton {
   display: inline-flex; align-items: center; justify-content: center;
@@ -340,7 +353,7 @@ a:hover { text-decoration-color: var(--rouge); }
   font-size: .72rem; letter-spacing: .28em; text-transform: uppercase;
   transition: background-color .35s var(--courbe), color .35s var(--courbe);
 }
-.bouton:hover { background: var(--rouge); color: #FFFFFF; }
+.bouton:hover { background: var(--vert-clair); color: var(--encre); }
 
 /* --- Pied --------------------------------------------------------------- */
 .pied { border-top: 1px solid var(--filet); padding-block: clamp(3rem, 7vw, 5rem) 2rem; }
@@ -350,7 +363,7 @@ a:hover { text-decoration-color: var(--rouge); }
 .pied p { color: var(--encre-doux); font-size: .95rem; margin: .9rem 0 0; }
 .pied ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .55rem; }
 .pied ul a { font-size: .95rem; color: var(--encre-doux); text-decoration: none; }
-.pied ul a:hover { color: var(--encre); }
+.pied ul a:hover { color: var(--vert); }
 .pied__mention {
   margin-top: clamp(2.5rem, 6vw, 4rem); padding-top: 1.3rem;
   border-top: 1px solid var(--filet);
@@ -367,7 +380,7 @@ a:hover { text-decoration-color: var(--rouge); }
   color: #CFC9C0; font-size: 1.3rem; cursor: pointer;
   transition: color .3s;
 }
-.visionneuse__bouton:hover { color: #FFFFFF; }
+.visionneuse__bouton:hover { color: var(--vert-clair); }
 
 /* --- Utilitaires -------------------------------------------------------- */
 .hors-ecran {
