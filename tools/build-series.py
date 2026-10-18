@@ -117,7 +117,7 @@ def pied() -> str:
     <div class="pied__rangee">
       <div>
         <p class="pied__nom didone">{SITE['nom']}</p>
-        <p>{SITE['base']}, et partout où le projet se trouve.</p>
+        <p>{SITE['base']} et partout où le projet se trouve.</p>
         <p><a href="{SITE['instagram']}" rel="noopener">Instagram</a></p>
       </div>
       <ul>
