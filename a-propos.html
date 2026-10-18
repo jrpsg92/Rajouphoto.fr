@@ -23,6 +23,7 @@
 </head>
 <body>
 <a class="saut-contenu" href="#contenu">Aller au contenu</a>
+<div class="rideau" aria-hidden="true"></div>
 
 <header class="entete" data-entete>
   <div class="enveloppe entete__rangee">
@@ -49,14 +50,16 @@
 <main id="contenu">
   <section class="section">
     <div class="enveloppe duo duo--portrait">
-      <img src="img/portrait-raju-1000.webp"
-           srcset="img/portrait-raju-480.webp 480w, img/portrait-raju-1000.webp 1000w"
-           sizes="(min-width: 56rem) 46vw, 100vw"
-           alt="Raju Sinniah, appareil levé, reflété dans une vitrine"
-           width="1000" height="1333">
+      <div class="volet" data-apparait>
+        <img src="img/portrait-raju-1000.webp"
+             srcset="img/portrait-raju-480.webp 480w, img/portrait-raju-1000.webp 1000w"
+             sizes="(min-width: 56rem) 46vw, 100vw"
+             alt="Raju Sinniah, appareil levé, reflété dans une vitrine"
+             width="1000" height="1333">
+      </div>
       <div>
         <p class="repere">À propos</p>
-        <h1 style="margin-top:.7rem">Raju</h1>
+        <h1 class="leve" style="margin-top:.5rem"><span>Raju</span></h1>
         <p style="margin-top:1.6rem">Je suis passionné de photographie depuis
           l'adolescence. Un appareil dans les mains, et je passais mes week-ends
           dehors à chercher la bonne lumière.</p>
@@ -79,7 +82,7 @@
         <p class="repere">En bref</p>
         <h2>Quelques repères</h2>
       </div>
-      <ul class="liste-grande">
+      <ul class="liste-grande" data-apparait>
         <li><span>Photographe depuis 2010 <em>Formé au reportage</em></span></li>
         <li><span>Des centaines d'événements <em>Mariages, concerts, fêtes, entreprises</em></span></li>
         <li><span>Île-de-France <em>Et déplacements dans toute la France</em></span></li>

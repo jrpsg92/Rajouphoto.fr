@@ -23,6 +23,7 @@
 </head>
 <body>
 <a class="saut-contenu" href="#contenu">Aller au contenu</a>
+<div class="rideau" aria-hidden="true"></div>
 
 <header class="entete" data-entete>
   <div class="enveloppe entete__rangee">
@@ -52,11 +53,9 @@
     <div class="enveloppe">
       <span class="leve"><span class="repere">Bienvenue</span></span>
       <h1 class="leve leve--2"><span>Raju Sinniah</span></h1>
-      <span class="leve leve--3">
-        <span class="accueil__ligne">Photographe depuis 2010. Je saisis ce qui arrive,
-        je ne le mets pas en scène.</span>
-      </span>
-      <div class="accueil__actions"><a class="action" href="humains.html">Voir le travail</a></div>
+      <div class="accueil__actions leve leve--3">
+        <span><a class="action" href="humains.html">Voir le travail</a></span>
+      </div>
     </div>
   </section>
 
@@ -64,41 +63,41 @@
     <div class="enveloppe">
       <!-- series:debut -->
       <div class="series">
-        <a class="serie" href="humains.html">
-          <div class="serie__cadre">
+        <a class="serie" href="humains.html" data-apparait style="--delai:0.00s">
+          <div class="serie__cadre volet">
             <img src="img/humains-01-480.webp" srcset="img/humains-01-480.webp 480w, img/humains-01-1000.webp 1000w, img/humains-01-1700.webp 1700w"
                sizes="(min-width: 52rem) 31vw, 100vw"
-               alt="Humains, celles et ceux que j'ai photographiés" loading="lazy">
+               alt="Humains, photographie de Raju Sinniah" loading="lazy">
+            <span class="serie__pied">
+              <span class="serie__nom didone">Humains</span>
+              <span class="serie__nombre">56</span>
+            </span>
           </div>
-          <div class="serie__pied">
-            <h3>Humains</h3>
-            <span class="serie__nombre">56</span>
-          </div>
-          <p class="serie__mot">Celles et ceux que j'ai photographiés.</p>
+          <span class="serie__fleche">Voir la série</span>
         </a>
-        <a class="serie" href="fragments.html">
-          <div class="serie__cadre">
+        <a class="serie" href="fragments.html" data-apparait style="--delai:0.12s">
+          <div class="serie__cadre volet">
             <img src="img/fragments-01-480.webp" srcset="img/fragments-01-480.webp 480w, img/fragments-01-1000.webp 1000w"
                sizes="(min-width: 52rem) 31vw, 100vw"
-               alt="Fragments, le vivant de près. fleurs, herbes, insectes" loading="lazy">
+               alt="Fragments, photographie de Raju Sinniah" loading="lazy">
+            <span class="serie__pied">
+              <span class="serie__nom didone">Fragments</span>
+              <span class="serie__nombre">32</span>
+            </span>
           </div>
-          <div class="serie__pied">
-            <h3>Fragments</h3>
-            <span class="serie__nombre">32</span>
-          </div>
-          <p class="serie__mot">Le vivant de près. Fleurs, herbes, insectes.</p>
+          <span class="serie__fleche">Voir la série</span>
         </a>
-        <a class="serie" href="moments.html">
-          <div class="serie__cadre">
+        <a class="serie" href="moments.html" data-apparait style="--delai:0.24s">
+          <div class="serie__cadre volet">
             <img src="img/moments-01-480.webp" srcset="img/moments-01-480.webp 480w, img/moments-01-1000.webp 1000w"
                sizes="(min-width: 52rem) 31vw, 100vw"
-               alt="Moments, des lieux, des villes, des jours qui passent" loading="lazy">
+               alt="Moments, photographie de Raju Sinniah" loading="lazy">
+            <span class="serie__pied">
+              <span class="serie__nom didone">Moments</span>
+              <span class="serie__nombre">48</span>
+            </span>
           </div>
-          <div class="serie__pied">
-            <h3>Moments</h3>
-            <span class="serie__nombre">48</span>
-          </div>
-          <p class="serie__mot">Des lieux, des villes, des jours qui passent.</p>
+          <span class="serie__fleche">Voir la série</span>
         </a>
       </div>
       <!-- series:fin -->
@@ -106,12 +105,14 @@
   </section>
 
   <section class="section section--creuse">
-    <div class="enveloppe duo duo--portrait">
-      <img src="img/portrait-raju-1000.webp"
-           srcset="img/portrait-raju-480.webp 480w, img/portrait-raju-1000.webp 1000w"
-           sizes="(min-width: 56rem) 46vw, 100vw"
-           alt="Raju Sinniah, appareil levé, reflété dans une vitrine"
-           loading="lazy" width="1000" height="1333">
+    <div class="enveloppe duo duo--portrait" data-apparait>
+      <div class="volet">
+        <img src="img/portrait-raju-1000.webp"
+             srcset="img/portrait-raju-480.webp 480w, img/portrait-raju-1000.webp 1000w"
+             sizes="(min-width: 56rem) 46vw, 100vw"
+             alt="Raju Sinniah, appareil levé, reflété dans une vitrine"
+             loading="lazy" width="1000" height="1333">
+      </div>
       <div>
         <p class="repere">Qui je suis</p>
         <h2 style="margin-top:.7rem">La photo depuis<br>toujours</h2>

@@ -68,7 +68,8 @@ def tete(titre: str, description: str, page: str, og: str) -> str:
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<a class="saut-contenu" href="#contenu">Aller au contenu</a>"""
+<a class="saut-contenu" href="#contenu">Aller au contenu</a>
+<div class="rideau" aria-hidden="true"></div>"""
 
 
 def entete(actif: str) -> str:
@@ -122,12 +123,13 @@ def pied() -> str:
 def page_serie(serie: dict) -> str:
     vignettes = "\n".join(
         f'        <figure class="cliche">\n'
-        f'          <button type="button" data-cliche>\n'
-        f'            <img {jeu(c["fichier"], "(min-width: 52rem) 31vw, 47vw")}\n'
+        f'          <button type="button" data-cliche class="volet" '
+        f'data-apparait style="--delai:{(i % 4) * .08:.2f}s">\n'
+        f'            <img {jeu(c["fichier"], "(min-width: 72rem) 23vw, (min-width: 40rem) 31vw, 47vw")}\n'
         f'               alt="{c["alt"]}" loading="lazy">\n'
         f"          </button>\n"
         f"        </figure>"
-        for c in serie["cliches"]
+        for i, c in enumerate(serie["cliches"])
     )
     titre = f"{serie['titre']} — {SITE['nom']}"
     return f"""{tete(titre, serie['resume'], serie['cle'] + '.html', serie['couverture'])}
@@ -137,10 +139,9 @@ def page_serie(serie: dict) -> str:
 <main id="contenu">
   <section class="section" style="padding-top:clamp(7rem,16vh,11rem)">
     <div class="enveloppe">
-      <div class="section__chapeau">
-        <p class="repere">Série</p>
-        <h1>{serie['titre']}</h1>
-        <p style="margin-top:1.2rem;color:var(--ivoire-doux)">{serie['resume']}</p>
+      <div class="section__chapeau section__chapeau--serie">
+        <p class="repere">Série · {len(serie['cliches']):02d} photographies</p>
+        <h1 class="leve"><span>{serie['titre']}</span></h1>
       </div>
 
       <div class="planche">
@@ -165,18 +166,18 @@ def page_serie(serie: dict) -> str:
 
 def apercu() -> str:
     blocs = []
-    for s in SERIES:
+    for i, s in enumerate(SERIES):
         blocs.append(
-            f'        <a class="serie" href="{s["cle"]}.html">\n'
-            f'          <div class="serie__cadre">\n'
+            f'        <a class="serie" href="{s["cle"]}.html" data-apparait style="--delai:{i * .12:.2f}s">\n'
+            f'          <div class="serie__cadre volet">\n'
             f'            <img {jeu(s["couverture"], "(min-width: 52rem) 31vw, 100vw")}\n'
-            f'               alt="{s["titre"]}, {s["resume"].rstrip(".").lower()}" loading="lazy">\n'
+            f'               alt="{s["titre"]}, photographie de {SITE["nom"]}" loading="lazy">\n'
+            f'            <span class="serie__pied">\n'
+            f'              <span class="serie__nom didone">{s["titre"]}</span>\n'
+            f'              <span class="serie__nombre">{len(s["cliches"]):02d}</span>\n'
+            f"            </span>\n"
             f"          </div>\n"
-            f'          <div class="serie__pied">\n'
-            f'            <h3>{s["titre"]}</h3>\n'
-            f'            <span class="serie__nombre">{len(s["cliches"]):02d}</span>\n'
-            f"          </div>\n"
-            f'          <p class="serie__mot">{s["resume"]}</p>\n'
+            f'          <span class="serie__fleche">Voir la série</span>\n'
             f"        </a>"
         )
     return '      <div class="series">\n' + "\n".join(blocs) + "\n      </div>"
@@ -201,22 +202,19 @@ def elaguer_srcset() -> None:
                 bout = bout.strip()
                 if not bout:
                     continue
-                chemin = bout.split()[0]
-                if (RACINE / chemin).exists():
+                if (RACINE / bout.split()[0]).exists():
                     gardees.append(bout)
             return f'srcset="{", ".join(gardees)}"'
 
         texte = re.sub(r'srcset="([^"]+)"', nettoyer, texte)
 
-        # Un src qui pointe vers un fichier absent est remplacé par la plus
-        # grande largeur réellement disponible pour cette photo.
         def rabattre(m: re.Match) -> str:
             chemin = m.group(1)
             if (RACINE / chemin).exists():
                 return m.group(0)
             souche = re.sub(r"-\d+\.webp$", "", chemin)
             dispo = sorted(RACINE.glob(f"{souche}-*.webp"),
-                           key=lambda p: int(p.stem.rsplit("-", 1)[1]))
+                           key=lambda q: int(q.stem.rsplit("-", 1)[1]))
             if not dispo:
                 raise SystemExit(f"{page.name} : aucune image pour {chemin}")
             return f'src="{dispo[-1].relative_to(RACINE)}"'

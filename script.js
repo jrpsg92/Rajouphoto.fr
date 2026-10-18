@@ -42,6 +42,27 @@
     window.addEventListener("scroll", poser, { passive: true });
   }
 
+  /* --- Apparition au défilement ------------------------------------------ */
+  /* Les éléments montent quand ils entrent dans le cadre. Rien n'est caché
+     tant que le script n'a pas pris la main, donc une page sans JavaScript
+     reste entièrement lisible. */
+  var aVoir = Array.prototype.slice.call(document.querySelectorAll("[data-apparait]"));
+  var sobre = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (aVoir.length && "IntersectionObserver" in window && !sobre) {
+    var veille = new IntersectionObserver(function (entrees) {
+      entrees.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.dataset.vu = "true";
+        veille.unobserve(e.target);
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: .08 });
+
+    aVoir.forEach(function (el) { veille.observe(el); });
+  } else {
+    aVoir.forEach(function (el) { el.dataset.vu = "true"; });
+  }
+
   /* --- Visionneuse ------------------------------------------------------- */
   var boutons = Array.prototype.slice.call(document.querySelectorAll("[data-cliche]"));
   var boite = document.querySelector("[data-visionneuse]");

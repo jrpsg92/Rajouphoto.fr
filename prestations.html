@@ -23,6 +23,7 @@
 </head>
 <body>
 <a class="saut-contenu" href="#contenu">Aller au contenu</a>
+<div class="rideau" aria-hidden="true"></div>
 
 <header class="entete" data-entete>
   <div class="enveloppe entete__rangee">
@@ -50,13 +51,11 @@
   <section class="section">
     <div class="enveloppe">
       <div class="section__chapeau">
-        <p class="repere">Prestations</p>
-        <h1>Travailler<br>ensemble</h1>
-        <p>La démarche ne change pas selon l'occasion. Je viens, je me fais
-          oublier, et je rapporte ce qui s'est passé.</p>
+        <p class="repere">Travailler ensemble</p>
+        <h1 class="leve"><span>Votre projet</span></h1>
       </div>
 
-      <ul class="liste-grande">
+      <ul class="liste-grande" data-apparait>
         <li><span>Mariages <em>Journée entière ou quelques heures</em></span></li>
         <li><span>Fêtes de famille <em>Anniversaires, baptêmes, réunions</em></span></li>
         <li><span>Portraits <em>Seul, en couple, en famille</em></span></li>
@@ -68,18 +67,20 @@
   </section>
 
   <section class="section section--creuse">
-    <div class="enveloppe duo">
-      <img src="img/humains-11-1000.webp"
-           srcset="img/humains-11-480.webp 480w, img/humains-11-1000.webp 1000w"
-           sizes="(min-width: 56rem) 46vw, 100vw"
-           alt="Marié soulevant la mariée, bouquet bleu en mouvement"
-           loading="lazy" width="1000" height="1250">
+    <div class="enveloppe duo" data-apparait>
+      <div class="volet">
+        <img src="img/humains-11-1000.webp"
+             srcset="img/humains-11-480.webp 480w, img/humains-11-1000.webp 1000w"
+             sizes="(min-width: 56rem) 46vw, 100vw"
+             alt="Marié soulevant la mariée, bouquet bleu en mouvement"
+             loading="lazy" width="1000" height="1250">
+      </div>
       <div>
-        <p class="repere">Le devis</p>
-        <h2 style="margin-top:.7rem">Au cas par cas</h2>
-        <p style="margin-top:1.4rem;color:var(--encre-doux)">Une journée de mariage
-          et un portrait d'une heure n'ont rien de comparable. Dites-moi la date,
-          le lieu et ce que vous préparez, je reviens vers vous avec un prix.</p>
+        <p class="repere">La suite</p>
+        <h2 style="margin-top:.7rem">Racontez-moi<br>votre projet</h2>
+        <p style="margin-top:1.4rem;color:var(--encre-doux)">Chaque projet a son
+          rythme et ses enjeux. Dites-moi ce que vous préparez, je vous dis
+          comment je m'y prendrais.</p>
         <p style="margin-top:1.6rem"><a class="action" href="contact.html">Me contacter</a></p>
       </div>
     </div>
