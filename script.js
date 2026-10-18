@@ -1,34 +1,48 @@
 /* Raju Sinniah — comportements partagés.
-   Tout est optionnel : sans JS, la navigation et les photographies
+   Tout est optionnel : sans JS, les pages et les photographies
    restent accessibles. */
 (function () {
   "use strict";
 
-  /* --- Menu ------------------------------------------------------------- */
+  /* --- Volet de navigation ---------------------------------------------- */
   var bascule = document.querySelector("[data-bascule]");
   var nav = document.querySelector("[data-nav]");
+  var libelle = document.querySelector("[data-libelle]");
 
   if (bascule && nav) {
-    bascule.hidden = false;
     nav.dataset.ouvert = "false";
-    bascule.setAttribute("aria-expanded", "false");
+
+    function basculer(ouvrir) {
+      bascule.setAttribute("aria-expanded", String(ouvrir));
+      nav.dataset.ouvert = String(ouvrir);
+      if (libelle) libelle.textContent = ouvrir ? "Fermer" : "Menu";
+      // Empêche la page de défiler derrière le volet.
+      document.body.style.overflow = ouvrir ? "hidden" : "";
+    }
 
     bascule.addEventListener("click", function () {
-      var ouvert = bascule.getAttribute("aria-expanded") === "true";
-      bascule.setAttribute("aria-expanded", String(!ouvert));
-      nav.dataset.ouvert = String(!ouvert);
+      basculer(bascule.getAttribute("aria-expanded") !== "true");
     });
 
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape" && bascule.getAttribute("aria-expanded") === "true") {
-        bascule.setAttribute("aria-expanded", "false");
-        nav.dataset.ouvert = "false";
+        basculer(false);
         bascule.focus();
       }
     });
   }
 
-  /* --- Visionneuse ------------------------------------------------------ */
+  /* --- Fond de l'en-tête au défilement ----------------------------------- */
+  var entete = document.querySelector("[data-entete]");
+  if (entete) {
+    var poser = function () {
+      entete.dataset.pose = String(window.scrollY > 40);
+    };
+    poser();
+    window.addEventListener("scroll", poser, { passive: true });
+  }
+
+  /* --- Visionneuse ------------------------------------------------------- */
   var boutons = Array.prototype.slice.call(document.querySelectorAll("[data-cliche]"));
   var boite = document.querySelector("[data-visionneuse]");
 

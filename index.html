@@ -3,106 +3,107 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Raju Sinniah — Photographe en Île-de-France</title>
-<meta name="description" content="Photographe depuis 2010, venu du photojournalisme. Portraits, mariages, anniversaires et images de marque. Basé en Île-de-France, je me déplace dans toute la France.">
+<title>Raju Sinniah — Photographe, Île-de-France</title>
+<meta name="description" content="Photographe depuis 2010, venu du photojournalisme. Mariages, portraits, anniversaires et images de marque, en Île-de-France et partout en France.">
 <link rel="canonical" href="https://jrpsg92.github.io/Rajouphoto.fr/">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Raju Sinniah — Photographe en Île-de-France">
-<meta property="og:description" content="Photographe depuis 2010, venu du photojournalisme. Portraits, mariages, anniversaires et images de marque.">
+<meta property="og:title" content="Raju Sinniah — Photographe, Île-de-France">
+<meta property="og:description" content="Photographe depuis 2010, venu du photojournalisme.">
+<meta property="og:image" content="https://jrpsg92.github.io/Rajouphoto.fr/img/moments-05-1200.webp">
 <meta property="og:url" content="https://jrpsg92.github.io/Rajouphoto.fr/">
 <meta property="og:locale" content="fr_FR">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#F7F6F3">
+<meta name="theme-color" content="#0E0B09">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Jost:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <a class="saut-contenu" href="#contenu">Aller au contenu</a>
 
-<p class="note-chantier">
-  Site en préparation. Les images affichées sont des <strong>images d'attente</strong>,
-  en place de celles de Raju.
-</p>
-
-<header class="entete">
+<header class="entete" data-entete>
   <div class="enveloppe entete__rangee">
-    <a class="signature" href="index.html">
-      Raju Sinniah
-      <span>Photographe</span>
-    </a>
-    <button class="bascule" data-bascule aria-expanded="false" aria-controls="menu" hidden>
-      <span class="bascule__traits" aria-hidden="true"></span> Menu
+    <a class="signature" href="index.html">Raju Sinniah</a>
+    <button class="bascule" data-bascule aria-expanded="false" aria-controls="menu">
+      <span class="bascule__traits" aria-hidden="true"></span>
+      <span data-libelle>Menu</span>
     </button>
-    <nav class="nav" id="menu" data-nav aria-label="Navigation principale">
-      <ul>
-        <li><a href="index.html" aria-current="page">Accueil</a></li>
-        <li><a href="humains.html">Humains</a></li>
-        <li><a href="fragments.html">Fragments</a></li>
-        <li><a href="moments.html">Moments</a></li>
-        <li><a href="travailler-ensemble.html">Travailler ensemble</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
   </div>
 </header>
+
+<nav class="nav" id="menu" data-nav aria-label="Navigation principale">
+  <ul>
+    <li><a href="index.html" aria-current="page">Accueil</a></li>
+    <li><a href="humains.html">Humains</a></li>
+    <li><a href="fragments.html">Fragments</a></li>
+    <li><a href="moments.html">Moments</a></li>
+    <li><a href="prestations.html">Prestations</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
 
 <main id="contenu">
 
   <section class="ouverture">
-    <div class="enveloppe">
-      <h1>Photographier<br>les gens tels qu'ils sont</h1>
-      <p>Je photographie depuis 2010. Je viens du photojournalisme et j'en ai
-         gardé l'essentiel, attendre le vrai moment plutôt que le provoquer.</p>
-      <div class="ouverture__actions">
-        <a class="action" href="humains.html">Voir le travail</a>
-        <a class="action action--nu" href="travailler-ensemble.html">Travailler ensemble</a>
-      </div>
+    <img class="ouverture__image"
+         src="img/moments-05-1800.webp"
+         srcset="img/moments-05-640.webp 640w, img/moments-05-1200.webp 1200w, img/moments-05-1800.webp 1800w, img/moments-05-2400.webp 2400w"
+         sizes="100vw"
+         alt="Danseuses en sari bleu et jaune, bras tendus à l'unisson"
+         width="2400" height="1600" fetchpriority="high">
+    <div class="enveloppe ouverture__texte">
+      <span class="leve"><span class="repere">Bienvenue</span></span>
+      <h1 class="leve"><span>Raju Sinniah</span></h1>
+      <span class="leve leve--tard">
+        <span class="ouverture__ligne">Photographe depuis 2010. Je saisis ce qui arrive,
+        je ne le mets pas en scène.</span>
+      </span>
     </div>
   </section>
 
-  <section class="section filet-haut">
+  <section class="section">
     <div class="enveloppe">
+      <div class="section__chapeau">
+        <p class="repere">Le travail</p>
+        <h2>Trois séries</h2>
+      </div>
       <!-- series:debut -->
       <div class="series">
         <a class="serie" href="humains.html">
           <div class="serie__cadre">
             <img src="img/humains-01-640.webp" srcset="img/humains-01-640.webp 640w, img/humains-01-1200.webp 1200w, img/humains-01-1800.webp 1800w"
                sizes="(min-width: 52rem) 31vw, 100vw"
-               alt="Humains — Des portraits, et surtout des présences. Ce que quelqu'un la" loading="lazy">
+               alt="Humains, des visages, et ce qu'ils laissent passer" loading="lazy">
           </div>
           <div class="serie__pied">
-            <h2>Humains</h2>
-            <span class="serie__nombre">6 photographies</span>
+            <h3>Humains</h3>
+            <span class="serie__nombre">12</span>
           </div>
-          <p style="margin-top:.9rem;color:var(--encre-doux)">Des portraits, et surtout des présences. Ce que quelqu'un laisse voir quand il oublie l'appareil.</p>
         </a>
         <a class="serie" href="fragments.html">
           <div class="serie__cadre">
             <img src="img/fragments-01-640.webp" srcset="img/fragments-01-640.webp 640w, img/fragments-01-1200.webp 1200w, img/fragments-01-1800.webp 1800w"
                sizes="(min-width: 52rem) 31vw, 100vw"
-               alt="Fragments — Les détails qu'on ne regarde pas. Une main, une lumière, un " loading="lazy">
+               alt="Fragments, les détails que personne ne regarde" loading="lazy">
           </div>
           <div class="serie__pied">
-            <h2>Fragments</h2>
-            <span class="serie__nombre">6 photographies</span>
+            <h3>Fragments</h3>
+            <span class="serie__nombre">12</span>
           </div>
-          <p style="margin-top:.9rem;color:var(--encre-doux)">Les détails qu'on ne regarde pas. Une main, une lumière, un bout de décor qui en dit plus que l'ensemble.</p>
         </a>
         <a class="serie" href="moments.html">
           <div class="serie__cadre">
-            <img src="img/moments-01-640.webp" srcset="img/moments-01-640.webp 640w, img/moments-01-1200.webp 1200w, img/moments-01-1800.webp 1800w"
+            <img src="img/moments-01-640.webp" srcset="img/moments-01-640.webp 640w, img/moments-01-1200.webp 1200w"
                sizes="(min-width: 52rem) 31vw, 100vw"
-               alt="Moments — Mariages, anniversaires, réunions de famille. Ce qui se pass" loading="lazy">
+               alt="Moments, mariages, fêtes, scène. ce qui arrive vraiment" loading="lazy">
           </div>
           <div class="serie__pied">
-            <h2>Moments</h2>
-            <span class="serie__nombre">6 photographies</span>
+            <h3>Moments</h3>
+            <span class="serie__nombre">12</span>
           </div>
-          <p style="margin-top:.9rem;color:var(--encre-doux)">Mariages, anniversaires, réunions de famille. Ce qui se passe entre les photos de groupe.</p>
         </a>
       </div>
       <!-- series:fin -->
@@ -110,21 +111,19 @@
   </section>
 
   <section class="section section--creuse">
-    <div class="enveloppe">
-      <div class="colonne">
-      <h2>Ma façon de travailler</h2>
-      <p>Le photojournalisme m'a appris à me faire oublier. Je ne dirige pas
-         beaucoup, je préfère rester disponible et saisir ce qui arrive. Les
-         images qui restent sont rarement celles qu'on a posées.</p>
-      <p>Ça vaut pour un portrait comme pour un mariage. Les photos de groupe
-         sont faites, bien sûr, mais ce ne sont jamais elles qu'on regarde
-         dix ans après.</p>
-      <ul class="reperes">
-        <li>Photographe depuis 2010, formé au reportage</li>
-        <li>Portraits, mariages, anniversaires, images de marque</li>
-        <li>Basé en Île-de-France, déplacements dans toute la France</li>
-      </ul>
-      <p style="margin-top:2rem"><a class="action action--nu" href="travailler-ensemble.html">Ce que je propose</a></p>
+    <div class="enveloppe duo">
+      <img src="img/humains-04-1200.webp"
+           srcset="img/humains-04-640.webp 640w, img/humains-04-1200.webp 1200w"
+           sizes="(min-width: 56rem) 46vw, 100vw"
+           alt="Peintre au travail, traversé par la lumière d'une fenêtre"
+           loading="lazy" width="1200" height="1500">
+      <div>
+        <p class="repere">La démarche</p>
+        <h2 style="margin-top:.7rem">Me faire oublier</h2>
+        <p style="margin-top:1.4rem;color:var(--ivoire-doux)">Le photojournalisme
+          m'a appris à attendre plutôt qu'à diriger. Les images qui restent sont
+          rarement celles qu'on a posées.</p>
+        <p style="margin-top:1.8rem"><a class="action" href="prestations.html">Ce que je propose</a></p>
       </div>
     </div>
   </section>
@@ -135,15 +134,15 @@
   <div class="enveloppe">
     <div class="pied__rangee">
       <div>
-        <p>Raju Sinniah, photographe depuis 2010.</p>
-        <p>Basé en Île-de-France, je me déplace dans toute la France.</p>
+        <p class="pied__nom didone">Raju Sinniah</p>
+        <p>Île-de-France, et partout où le projet se trouve.</p>
         <p><a href="https://www.instagram.com/raju_sinniah/" rel="noopener">Instagram</a></p>
       </div>
       <ul>
         <li><a href="humains.html">Humains</a></li>
         <li><a href="fragments.html">Fragments</a></li>
         <li><a href="moments.html">Moments</a></li>
-        <li><a href="travailler-ensemble.html">Travailler ensemble</a></li>
+        <li><a href="prestations.html">Prestations</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="mentions-legales.html">Mentions légales</a></li>
       </ul>
@@ -157,10 +156,10 @@
 {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  "additionalType": "https://schema.org/Photograph",
   "name": "Raju Sinniah",
-  "description": "Photographe depuis 2010, venu du photojournalisme. Portraits, mariages, anniversaires et images de marque.",
+  "description": "Photographe depuis 2010, venu du photojournalisme. Mariages, portraits, anniversaires et images de marque.",
   "url": "https://jrpsg92.github.io/Rajouphoto.fr/",
+  "image": "https://jrpsg92.github.io/Rajouphoto.fr/img/moments-05-1200.webp",
   "address": { "@type": "PostalAddress", "addressRegion": "Île-de-France", "addressCountry": "FR" },
   "areaServed": { "@type": "Country", "name": "France" },
   "sameAs": ["https://www.instagram.com/raju_sinniah/"],

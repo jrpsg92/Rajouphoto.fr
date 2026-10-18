@@ -17,77 +17,31 @@ SITE = MANIFESTE["site"]
 SERIES = MANIFESTE["series"]
 BASE = "https://jrpsg92.github.io/Rajouphoto.fr"
 
-LARGEURS_DISPO = [640, 1200, 1800, 2400]
+LARGEURS = [640, 1200, 1800, 2400]
+
+LIENS = [
+    ("index.html", "Accueil"),
+    ("humains.html", "Humains"),
+    ("fragments.html", "Fragments"),
+    ("moments.html", "Moments"),
+    ("prestations.html", "Prestations"),
+    ("contact.html", "Contact"),
+]
 
 
 def jeu(fichier: str, sizes: str) -> str:
     """srcset limité aux tailles réellement présentes dans img/."""
-    presentes = [l for l in LARGEURS_DISPO if (RACINE / "img" / f"{fichier}-{l}.webp").exists()]
+    presentes = [l for l in LARGEURS if (RACINE / "img" / f"{fichier}-{l}.webp").exists()]
     if not presentes:
         raise SystemExit(
-            f"Aucune image pour « {fichier} ». Lancez d'abord "
-            "tools/build-placeholders.py ou tools/build-images.py."
+            f"Aucune image pour « {fichier} ». Lancez d'abord tools/build-images.py."
         )
     srcset = ", ".join(f"img/{fichier}-{l}.webp {l}w" for l in presentes)
     return (f'src="img/{fichier}-{presentes[0]}.webp" srcset="{srcset}"\n'
             f'               sizes="{sizes}"')
 
 
-def entete(actif: str) -> str:
-    liens = [
-        ("index.html", "Accueil"),
-        ("humains.html", "Humains"),
-        ("fragments.html", "Fragments"),
-        ("moments.html", "Moments"),
-        ("travailler-ensemble.html", "Travailler ensemble"),
-        ("contact.html", "Contact"),
-    ]
-    items = "\n".join(
-        f'        <li><a href="{h}"{" aria-current=\"page\"" if h == actif else ""}>{t}</a></li>'
-        for h, t in liens
-    )
-    return f"""<header class="entete">
-  <div class="enveloppe entete__rangee">
-    <a class="signature" href="index.html">
-      {SITE['nom']}
-      <span>{SITE['metier']}</span>
-    </a>
-    <button class="bascule" data-bascule aria-expanded="false" aria-controls="menu" hidden>
-      <span class="bascule__traits" aria-hidden="true"></span> Menu
-    </button>
-    <nav class="nav" id="menu" data-nav aria-label="Navigation principale">
-      <ul>
-{items}
-      </ul>
-    </nav>
-  </div>
-</header>"""
-
-
-def pied() -> str:
-    return f"""<footer class="pied">
-  <div class="enveloppe">
-    <div class="pied__rangee">
-      <div>
-        <p>{SITE['nom']}, photographe depuis {SITE['depuis']}.</p>
-        <p>Basé en {SITE['base']}, je me déplace dans {SITE['zone'][0].lower() + SITE['zone'][1:]}.</p>
-        <p><a href="{SITE['instagram']}" rel="noopener">Instagram</a></p>
-      </div>
-      <ul>
-        <li><a href="humains.html">Humains</a></li>
-        <li><a href="fragments.html">Fragments</a></li>
-        <li><a href="moments.html">Moments</a></li>
-        <li><a href="travailler-ensemble.html">Travailler ensemble</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="mentions-legales.html">Mentions légales</a></li>
-      </ul>
-    </div>
-    <p class="pied__mention">© 2026 {SITE['nom']}. Toutes les photographies sont protégées.</p>
-  </div>
-</footer>"""
-
-
-def tete(titre: str, description: str, page: str) -> str:
+def tete(titre: str, description: str, page: str, og: str) -> str:
     return f"""<!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -100,62 +54,95 @@ def tete(titre: str, description: str, page: str) -> str:
 <meta property="og:type" content="website">
 <meta property="og:title" content="{titre}">
 <meta property="og:description" content="{description}">
+<meta property="og:image" content="{BASE}/img/{og}-1200.webp">
 <meta property="og:url" content="{BASE}/{page}">
 <meta property="og:locale" content="fr_FR">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#F7F6F3">
+<meta name="theme-color" content="#0E0B09">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Jost:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <a class="saut-contenu" href="#contenu">Aller au contenu</a>"""
 
 
-def page_serie(serie: dict) -> str:
-    planches = []
-    for c in serie["cliches"]:
-        # Planche contact : toutes les vignettes ont le même cadre, la photo
-        # s'ouvre en grand dans la visionneuse.
-        sizes = "(min-width: 52rem) 31vw, 47vw"
-        planches.append(
-            f'        <figure class="cliche">\n'
-            f'          <button type="button" data-cliche>\n'
-            f'            <img {jeu(c["fichier"], sizes)}\n'
-            f'               alt="{c["alt"]}" loading="lazy">\n'
-            f"          </button>\n"
-            f"        </figure>"
-        )
+def entete(actif: str) -> str:
+    items = "\n".join(
+        f'      <li><a href="{h}"{" aria-current=\"page\"" if h == actif else ""}>{t}</a></li>'
+        for h, t in LIENS
+    )
+    return f"""<header class="entete" data-entete>
+  <div class="enveloppe entete__rangee">
+    <a class="signature" href="index.html">{SITE['nom']}</a>
+    <button class="bascule" data-bascule aria-expanded="false" aria-controls="menu">
+      <span class="bascule__traits" aria-hidden="true"></span>
+      <span data-libelle>Menu</span>
+    </button>
+  </div>
+</header>
 
+<nav class="nav" id="menu" data-nav aria-label="Navigation principale">
+  <ul>
+{items}
+  </ul>
+</nav>"""
+
+
+def pied() -> str:
+    liens = "\n".join(
+        f'        <li><a href="{h}">{t}</a></li>' for h, t in LIENS[1:]
+    ) + '\n        <li><a href="mentions-legales.html">Mentions légales</a></li>'
+    return f"""<footer class="pied">
+  <div class="enveloppe">
+    <div class="pied__rangee">
+      <div>
+        <p class="pied__nom didone">{SITE['nom']}</p>
+        <p>{SITE['base']}, et partout où le projet se trouve.</p>
+        <p><a href="{SITE['instagram']}" rel="noopener">Instagram</a></p>
+      </div>
+      <ul>
+{liens}
+      </ul>
+    </div>
+    <p class="pied__mention">© 2026 {SITE['nom']}. Toutes les photographies sont protégées.</p>
+  </div>
+</footer>
+
+<script src="script.js" defer></script>
+</body>
+</html>
+"""
+
+
+def page_serie(serie: dict) -> str:
+    vignettes = "\n".join(
+        f'        <figure class="cliche">\n'
+        f'          <button type="button" data-cliche>\n'
+        f'            <img {jeu(c["fichier"], "(min-width: 52rem) 31vw, 47vw")}\n'
+        f'               alt="{c["alt"]}" loading="lazy">\n'
+        f"          </button>\n"
+        f"        </figure>"
+        for c in serie["cliches"]
+    )
     titre = f"{serie['titre']} — {SITE['nom']}"
-    desc = serie["resume"]
-    return f"""{tete(titre, desc, serie['cle'] + '.html')}
+    return f"""{tete(titre, serie['resume'], serie['cle'] + '.html', serie['couverture'])}
 
 {entete(serie['cle'] + '.html')}
 
 <main id="contenu">
-  <section class="section">
+  <section class="section" style="padding-top:clamp(7rem,16vh,11rem)">
     <div class="enveloppe">
-      <div class="section__chapeau colonne">
+      <div class="section__chapeau">
+        <p class="repere">Série</p>
         <h1>{serie['titre']}</h1>
-        <p>{serie['resume']}</p>
+        <p style="margin-top:1.2rem;color:var(--ivoire-doux)">{serie['resume']}</p>
       </div>
 
       <div class="planche">
-{chr(10).join(planches)}
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--creuse">
-    <div class="enveloppe">
-      <div class="colonne">
-        <h2>Un projet en tête&nbsp;?</h2>
-        <p>Portraits, mariages, anniversaires, images de marque. Dites-moi ce que
-           vous préparez, je vous dis comment je m'y prendrais.</p>
-        <p style="margin-top:1.75rem"><a class="action" href="contact.html">Me contacter</a></p>
+{vignettes}
       </div>
     </div>
   </section>
@@ -164,19 +151,14 @@ def page_serie(serie: dict) -> str:
 <dialog class="visionneuse" data-visionneuse aria-label="Photographie agrandie">
   <img src="" alt="">
   <div class="visionneuse__barre">
-    <button class="visionneuse__bouton" data-prec type="button" aria-label="Photographie précédente">‹</button>
+    <button class="visionneuse__bouton" data-prec type="button" aria-label="Précédente">←</button>
     <button class="visionneuse__bouton" data-fermer type="button" aria-label="Fermer">✕</button>
-    <button class="visionneuse__bouton" data-suiv type="button" aria-label="Photographie suivante">›</button>
+    <button class="visionneuse__bouton" data-suiv type="button" aria-label="Suivante">→</button>
   </div>
   <p class="hors-ecran" data-rang aria-live="polite"></p>
 </dialog>
 
-{pied()}
-
-<script src="script.js" defer></script>
-</body>
-</html>
-"""
+{pied()}"""
 
 
 def apercu() -> str:
@@ -186,23 +168,69 @@ def apercu() -> str:
             f'        <a class="serie" href="{s["cle"]}.html">\n'
             f'          <div class="serie__cadre">\n'
             f'            <img {jeu(s["couverture"], "(min-width: 52rem) 31vw, 100vw")}\n'
-            f'               alt="{s["titre"]} — {s["resume"][:60]}" loading="lazy">\n'
+            f'               alt="{s["titre"]}, {s["resume"].rstrip(".").lower()}" loading="lazy">\n'
             f"          </div>\n"
             f'          <div class="serie__pied">\n'
-            f'            <h2>{s["titre"]}</h2>\n'
-            f'            <span class="serie__nombre">{len(s["cliches"])} photographies</span>\n'
+            f'            <h3>{s["titre"]}</h3>\n'
+            f'            <span class="serie__nombre">{len(s["cliches"]):02d}</span>\n'
             f"          </div>\n"
-            f'          <p style="margin-top:.9rem;color:var(--encre-doux)">{s["resume"]}</p>\n'
             f"        </a>"
         )
     return '      <div class="series">\n' + "\n".join(blocs) + "\n      </div>"
 
 
+def elaguer_srcset() -> None:
+    """Retire des srcset les largeurs qui n'existent pas dans img/.
+
+    Toutes les photos n'ont pas la même définition d'origine, et on
+    n'agrandit jamais : une page écrite à la main peut donc réclamer un
+    fichier absent, et le navigateur affiche une image cassée. Ce passage
+    est le garde-fou.
+    """
+    corriges = 0
+    for page in sorted(RACINE.glob("*.html")):
+        texte = page.read_text(encoding="utf-8")
+        avant = texte
+
+        def nettoyer(m: re.Match) -> str:
+            gardees = []
+            for bout in m.group(1).split(","):
+                bout = bout.strip()
+                if not bout:
+                    continue
+                chemin = bout.split()[0]
+                if (RACINE / chemin).exists():
+                    gardees.append(bout)
+            return f'srcset="{", ".join(gardees)}"'
+
+        texte = re.sub(r'srcset="([^"]+)"', nettoyer, texte)
+
+        # Un src qui pointe vers un fichier absent est remplacé par la plus
+        # grande largeur réellement disponible pour cette photo.
+        def rabattre(m: re.Match) -> str:
+            chemin = m.group(1)
+            if (RACINE / chemin).exists():
+                return m.group(0)
+            souche = re.sub(r"-\d+\.webp$", "", chemin)
+            dispo = sorted(RACINE.glob(f"{souche}-*.webp"),
+                           key=lambda p: int(p.stem.rsplit("-", 1)[1]))
+            if not dispo:
+                raise SystemExit(f"{page.name} : aucune image pour {chemin}")
+            return f'src="{dispo[-1].relative_to(RACINE)}"'
+
+        texte = re.sub(r'src="(img/[^"]+\.webp)"', rabattre, texte)
+
+        if texte != avant:
+            page.write_text(texte, encoding="utf-8")
+            corriges += 1
+    if corriges:
+        print(f"  {corriges} page(s) : srcset élagué des largeurs absentes")
+
+
 def main() -> None:
     for s in SERIES:
-        cible = RACINE / f"{s['cle']}.html"
-        cible.write_text(page_serie(s), encoding="utf-8")
-        print(f"  {cible.name} écrite ({len(s['cliches'])} photographies)")
+        (RACINE / f"{s['cle']}.html").write_text(page_serie(s), encoding="utf-8")
+        print(f"  {s['cle']}.html écrite ({len(s['cliches'])} photographies)")
 
     index = RACINE / "index.html"
     texte = index.read_text(encoding="utf-8")
@@ -214,6 +242,7 @@ def main() -> None:
         encoding="utf-8",
     )
     print("  index.html : aperçu des séries régénéré")
+    elaguer_srcset()
 
 
 if __name__ == "__main__":

@@ -8,10 +8,7 @@ préparent les images et régénèrent le HTML des séries.
 
 ## Ce qu'il reste à faire avant la mise en ligne publique
 
-1. **Remplacer les images d'attente** par les photographies de Raju (voir plus bas).
-2. **Retirer le bandeau de chantier** en haut de `index.html` — le bloc
-   `<p class="note-chantier">`.
-3. **Compléter `mentions-legales.html`** — tous les champs `[À COMPLÉTER]`.
+1. **Compléter `mentions-legales.html`** — tous les champs `[À COMPLÉTER]`.
    C'est une obligation légale en France pour un site professionnel.
 4. **Ajouter une adresse e-mail** sur `contact.html`. Instagram seul fait
    perdre des demandes, et beaucoup d'entreprises n'écrivent pas en DM.
@@ -49,10 +46,6 @@ lancer les scripts :
 - `pleine: true` affiche l'image sur toute la largeur. Sans cette clé, elle
   occupe une demi-colonne. Alternez pour garder du rythme.
 
-Les images d'attente sont produites par `tools/build-placeholders.py`. Ce
-script ne sert qu'avant l'arrivée des vraies photos et peut être supprimé
-ensuite.
-
 > **Important.** `photos/` est exclu du dépôt par `.gitignore` — les
 > originaux pleine résolution d'un photographe pèsent trop lourd pour
 > GitHub. Seuls les dérivés WebP de `img/` sont versionnés. Les originaux
@@ -62,6 +55,9 @@ ensuite.
 ### Qualité d'image
 
 `tools/build-images.py` sort du WebP qualité 90 jusqu'à 2400 px de large.
+Une photo n'est jamais agrandie, donc un original de 1400 px ne produit
+que les largeurs inférieures. `build-series.py` élague alors les `srcset`
+des largeurs absentes, ce qui évite les images cassées.
 C'est volontairement généreux : sur le site d'un photographe, les images
 sont le produit. Ne baissez ces réglages que si Raju le demande.
 
@@ -72,17 +68,17 @@ sont le produit. Ne baissez ces réglages que si Raju le demande.
 Tout est dans `style.css`, dans le bloc `:root` en haut du fichier.
 
 ```css
---papier: #F7F6F3;   /* fond */
---encre:  #000000;   /* texte */
---rouge:  #C1121F;   /* unique couleur vive, repères de lecture */
+--noir:   #0E0B09;   /* fond, un noir chaud de chambre noire */
+--ivoire: #F2EDE6;   /* texte */
+--rouge:  #E04A4A;   /* unique couleur vive, repères de lecture */
 ```
 
 Les contrastes ont été vérifiés : toutes les paires texte/fond dépassent
 4,5:1, les contours porteurs d'information 3:1. Si vous changez une
 couleur, revérifiez avec un outil de contraste avant de publier.
 
-Les polices sont **Newsreader** pour les titres et **Archivo** pour le
-texte courant, chargées depuis Google Fonts.
+Les polices sont **Bodoni Moda** pour les titres et le nom, **Jost** pour
+le texte courant, chargées depuis Google Fonts.
 
 ---
 
@@ -93,7 +89,7 @@ index.html                 accueil
 humains.html               ─┐
 fragments.html              ├ générées par build-series.py, ne pas éditer à la main
 moments.html               ─┘
-travailler-ensemble.html   prestations
+prestations.html           prestations
 contact.html               contact
 mentions-legales.html      mentions légales
 series.json                le portfolio : séries, fichiers, descriptions
