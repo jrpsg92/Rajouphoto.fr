@@ -77,10 +77,10 @@ a:hover { text-decoration-color: var(--rouge); }
   padding-block: 1.3rem;
   background: color-mix(in srgb, var(--blanc) 90%, transparent);
   backdrop-filter: blur(14px);
-  border-bottom: 1px solid transparent;
+  border-bottom: 1px solid var(--filet);
   transition: border-color .4s var(--courbe);
 }
-.entete[data-pose="true"] { border-bottom-color: var(--filet); }
+.entete[data-pose="true"] { border-bottom-color: var(--filet-actif); }
 .entete__rangee {
   display: flex; align-items: center; justify-content: space-between;
   gap: 1rem; flex-wrap: nowrap;
@@ -307,6 +307,29 @@ a:hover { text-decoration-color: var(--rouge); }
 .duo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
 .duo--portrait img { aspect-ratio: 3 / 4; }
 
+/* --- Appel final -------------------------------------------------------- */
+.appel {
+  background: var(--encre); color: var(--blanc);
+  padding: clamp(3rem, 9vw, 6rem) clamp(1.5rem, 5vw, 4rem);
+  text-align: center;
+}
+.appel h2 { color: var(--blanc); }
+.appel p {
+  margin: 1.2rem auto 0; max-width: 40ch;
+  color: #BFB8AE;
+}
+.appel .repere { color: #BFB8AE; }
+
+.bouton {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 52px; margin-top: 2rem; padding: .9rem 2.2rem;
+  background: var(--blanc); color: var(--encre);
+  text-decoration: none;
+  font-size: .72rem; letter-spacing: .28em; text-transform: uppercase;
+  transition: background-color .35s var(--courbe), color .35s var(--courbe);
+}
+.bouton:hover { background: var(--rouge); color: #FFFFFF; }
+
 /* --- Pied --------------------------------------------------------------- */
 .pied { border-top: 1px solid var(--filet); padding-block: clamp(3rem, 7vw, 5rem) 2rem; }
 .pied__rangee { display: grid; gap: 2.5rem; }
@@ -367,13 +390,16 @@ a:hover { text-decoration-color: var(--rouge); }
 }
 @keyframes lever-rideau { to { transform: scaleY(0); } }
 
-/* Apparition au défilement. Sans JavaScript, rien n'est masqué. */
-[data-apparait] {
+/* Apparition au défilement. L'état masqué est porté par la classe « anim »,
+   posée par un script en tête de page et retirée d'office au bout de
+   2,5 s si rien ne l'a relayée. Sans JavaScript, ou si script.js ne
+   charge pas, le contenu reste donc visible. */
+.anim [data-apparait] {
   opacity: 0; transform: translateY(28px);
   transition: opacity .9s var(--courbe), transform .9s var(--courbe);
   transition-delay: var(--delai, 0s);
 }
-[data-apparait][data-vu="true"] { opacity: 1; transform: none; }
+.anim [data-apparait][data-vu="true"] { opacity: 1; transform: none; }
 
 /* Volet qui se retire sur l'image, comme on découvre un tirage. */
 .volet { position: relative; overflow: hidden; }
@@ -383,7 +409,9 @@ a:hover { text-decoration-color: var(--rouge); }
   transition: transform 1.05s var(--courbe);
   transition-delay: calc(var(--delai, 0s) + .12s);
 }
-[data-vu="true"] .volet::after, .volet[data-vu="true"]::after { transform: scaleY(0); }
+.anim [data-vu="true"] .volet::after,
+.anim .volet[data-vu="true"]::after { transform: scaleY(0); }
+:not(.anim) .volet::after { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -396,6 +424,6 @@ a:hover { text-decoration-color: var(--rouge); }
   .nav a { transform: none; }
   .rideau { display: none; }
   .suiveur { display: none; }
-  [data-apparait] { opacity: 1; transform: none; }
+  .anim [data-apparait] { opacity: 1; transform: none; }
   .volet::after { display: none; }
 }

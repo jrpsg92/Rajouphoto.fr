@@ -20,6 +20,19 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Jost:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script>
+  /* Les apparitions ne sont masquées que si la page peut vraiment les
+     révéler. Si script.js n'arrive pas, le filet de sécurité remet tout
+     en place au bout de 2,5 s. */
+  (function () {
+    var r = document.documentElement;
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    r.classList.add("anim");
+    setTimeout(function () {
+      if (!window.__revele) r.classList.remove("anim");
+    }, 2500);
+  })();
+</script>
 </head>
 <body>
 <a class="saut-contenu" href="#contenu">Aller au contenu</a>

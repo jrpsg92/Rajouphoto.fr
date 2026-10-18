@@ -44,6 +44,28 @@ def main() -> None:
                     pg.on("pageerror", lambda e: erreurs.append(str(e)))
                     pg.goto(f"http://127.0.0.1:{port}/{page_nom}", wait_until="load")
                     pg.wait_for_timeout(2600)  # laisse finir polices et animation
+                    # On parcourt la page pour déclencher les apparitions,
+                    # sinon la capture pleine hauteur montre des blocs vides.
+                    # Le défilement doit être instantané : la page demande un
+                    # défilement doux, qui n'atteindrait jamais les positions
+                    # voulues dans le temps imparti.
+                    pg.evaluate("""() => new Promise(r => {
+                        const html = document.documentElement;
+                        const doux = html.style.scrollBehavior;
+                        html.style.scrollBehavior = 'auto';
+                        let y = 0;
+                        const pas = () => {
+                            window.scrollTo(0, y);
+                            y += window.innerHeight * .8;
+                            if (y < html.scrollHeight) setTimeout(pas, 140);
+                            else {
+                                window.scrollTo(0, 0);
+                                html.style.scrollBehavior = doux;
+                                setTimeout(r, 1300);
+                            }
+                        };
+                        pas();
+                    })""")
                     cible = SORTIE / f"{Path(page_nom).stem}-{nom}.png"
                     pg.screenshot(path=str(cible), full_page=(nom == "bureau"))
                     print(f"  {cible}")

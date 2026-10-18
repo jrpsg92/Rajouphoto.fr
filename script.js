@@ -48,6 +48,7 @@
      reste entièrement lisible. */
   var aVoir = Array.prototype.slice.call(document.querySelectorAll("[data-apparait]"));
   var sobre = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  window.__revele = true;  // coupe le filet de sécurité posé en tête de page
 
   if (aVoir.length && "IntersectionObserver" in window && !sobre) {
     var veille = new IntersectionObserver(function (entrees) {
