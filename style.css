@@ -75,11 +75,23 @@ a:hover { text-decoration-color: var(--rouge); }
 .entete {
   position: sticky; top: 0; z-index: 200;
   padding-block: 1.3rem;
-  background: color-mix(in srgb, var(--blanc) 90%, transparent);
-  backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--filet);
   transition: border-color .4s var(--courbe);
 }
+/* Le fond et le flou vivent sur un calque séparé. Portés par .entete,
+   ils en feraient le bloc conteneur du volet de navigation, qui se
+   replierait alors sur la hauteur de la barre au lieu de couvrir
+   l'écran. C'est ce qui cassait le menu sur iPhone. */
+.entete::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: rgb(251 250 247 / .92);
+  background: color-mix(in srgb, var(--blanc) 92%, transparent);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+
+/* Le nom et le bouton restent au-dessus du volet, pour pouvoir le fermer. */
+.signature, .bascule { position: relative; z-index: 160; }
 .entete[data-pose="true"] { border-bottom-color: var(--filet-actif); }
 .entete__rangee {
   display: flex; align-items: center; justify-content: space-between;
