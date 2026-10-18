@@ -64,40 +64,6 @@
     aVoir.forEach(function (el) { el.dataset.vu = "true"; });
   }
 
-  /* --- Étiquette qui suit le curseur -------------------------------------- */
-  var planche = document.querySelector(".planche");
-  var pointeurFin = window.matchMedia("(pointer: fine)").matches;
-
-  if (planche && pointeurFin && !sobre) {
-    var suiveur = document.createElement("div");
-    suiveur.className = "suiveur";
-    suiveur.setAttribute("aria-hidden", "true");
-    suiveur.textContent = "Agrandir";
-    document.body.appendChild(suiveur);
-
-    var x = 0, y = 0, cx = 0, cy = 0, anime = false;
-
-    function glisser() {
-      // Léger retard sur le pointeur, pour que le repère ait du poids.
-      cx += (x - cx) * .18;
-      cy += (y - cy) * .18;
-      suiveur.style.translate = cx + "px " + cy + "px";
-      if (anime) requestAnimationFrame(glisser);
-    }
-
-    planche.addEventListener("pointerenter", function () {
-      suiveur.dataset.actif = "true";
-      if (!anime) { anime = true; requestAnimationFrame(glisser); }
-    });
-    planche.addEventListener("pointerleave", function () {
-      suiveur.dataset.actif = "false";
-      anime = false;
-    });
-    planche.addEventListener("pointermove", function (e) {
-      x = e.clientX; y = e.clientY;
-    });
-  }
-
   /* --- Visionneuse ------------------------------------------------------- */
   var boutons = Array.prototype.slice.call(document.querySelectorAll("[data-cliche]"));
   var boite = document.querySelector("[data-visionneuse]");

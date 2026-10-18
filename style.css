@@ -389,21 +389,6 @@ a:hover { text-decoration-color: var(--vert); }
   clip-path: inset(50%); white-space: nowrap;
 }
 
-/* --- Étiquette qui suit le curseur -------------------------------------- */
-/* Sur la planche, un repère suit le pointeur et annonce l'agrandissement.
-   Il n'apparaît qu'avec une souris, jamais au doigt. */
-.suiveur {
-  position: fixed; top: 0; left: 0; z-index: 120;
-  display: grid; place-items: center;
-  width: 92px; height: 92px; border-radius: 50%;
-  background: var(--encre); color: var(--blanc);
-  font-size: .6rem; letter-spacing: .22em; text-transform: uppercase;
-  pointer-events: none;
-  opacity: 0; transform: translate(-50%, -50%) scale(.6);
-  transition: opacity .35s var(--courbe), transform .35s var(--courbe);
-}
-.suiveur[data-actif="true"] { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-
 /* --- Interactions ------------------------------------------------------- */
 /* Rideau d'ouverture de page. Animation CSS pure, donc il se lève même
    si le JavaScript ne tourne pas. */
@@ -448,7 +433,6 @@ a:hover { text-decoration-color: var(--vert); }
   .leve > * { transform: none; }
   .nav a { transform: none; }
   .rideau { display: none; }
-  .suiveur { display: none; }
   .anim [data-apparait] { opacity: 1; transform: none; }
   .volet::after { display: none; }
 }
