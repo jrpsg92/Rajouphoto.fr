@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /mentions-legales.html
 
-Sitemap: https://jrpsg92.github.io/Rajouphoto.fr/sitemap.xml
+Sitemap: https://nailsbydeb.cloud/sitemap.xml

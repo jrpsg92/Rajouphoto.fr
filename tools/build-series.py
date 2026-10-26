@@ -15,7 +15,7 @@ RACINE = Path(__file__).resolve().parent.parent
 MANIFESTE = json.loads((RACINE / "series.json").read_text(encoding="utf-8"))
 SITE = MANIFESTE["site"]
 SERIES = MANIFESTE["series"]
-BASE = "https://jrpsg92.github.io/Rajouphoto.fr"
+BASE = "https://nailsbydeb.cloud"
 
 # Doit rester aligné sur tools/build-images.py.
 LARGEURS = [480, 1000, 1700]
